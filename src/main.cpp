@@ -19,6 +19,7 @@ int main() {
                 Cadastro();
             }
             else if (escolha == "RJ") {
+                cout << "Vou remover um jogador" << endl;
                 Cadastro::remover_jogador();
             }
             else if (escolha == "LJ") {
