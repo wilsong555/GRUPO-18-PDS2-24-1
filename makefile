@@ -1,39 +1,40 @@
-# Compilador
-CC = g++
+# Compiler
+CXX = g++
 
-# Diretórios
-SRC_DIR = src
-INCLUDE_DIR = include
-OBJ_DIR = obj
+# Compiler flags
+CXXFLAGS = -Wall -Wextra -Iinclude
 
-# Flags do compilador
-CXXFLAGS = -Wall -I$(INCLUDE_DIR) -g
+# Directories
+BINDIR = bin
+INCLUDEDIR = include
+OBJDIR = obj
+SRCDIR = src
 
-# Arquivos fonte
-SRCS = $(wildcard $(SRC_DIR)/*.cpp)
+# Target executable
+TARGET = $(BINDIR)/main
 
-# Arquivos objeto (gerados a partir dos arquivos fonte)
-OBJS = $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRCS))
+# Source files
+SOURCES = $(wildcard $(SRCDIR)/*.cpp)
 
-# Regra padrão
-all: $(OBJS)
+# Object files
+OBJECTS = $(patsubst $(SRCDIR)/%.cpp, $(OBJDIR)/%.o, $(SOURCES))
 
-# Regras para construir os arquivos objeto
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | create_dirs
-	$(CC) $(CXXFLAGS) -c $< -o $@
+# Default target
+all: $(TARGET)
+	@echo "Build complete!"
 
-# Regra para criar os diretórios necessários
-create_dirs:
-	@if not exist $(OBJ_DIR) mkdir $(OBJ_DIR)
+# Rule to build the target
+$(TARGET): $(OBJECTS)
+	@mkdir -p $(BINDIR)
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
-# Regra para limpar os arquivos objeto
+# Rule to build object files
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
+	@mkdir -p $(OBJDIR)
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+# Clean up build files
 clean:
-	-del /Q $(OBJ_DIR)\*.o
+	rm -rf $(OBJDIR)/*.o $(TARGET)
 
-# Regra para compilar e executar o main
-run_main: $(OBJ_DIR)/main.o $(OBJS)
-	$(CC) $(CXXFLAGS) $^ -o main
-	.\main.exe
-
-# Regra para garantir que `clean` e `create_dirs` não sejam interpretados como arquivos
-.PHONY: all clean create_dirs run_main
+.PHONY: all clean
