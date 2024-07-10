@@ -1,0 +1,25 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-Wall",
+                "-Wextra",
+                "-Iinclude",
+                "-o",
+                "bin/main",
+                "src/main.cpp",
+                "src/Cadastro.cpp", // Adicione todos os arquivos .cpp necessários
+                "src/OutroArquivo.cpp" // Adicione outros arquivos .cpp se houver
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"]
+        }
+    ]
+}

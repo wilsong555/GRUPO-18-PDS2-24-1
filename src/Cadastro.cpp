@@ -1,4 +1,5 @@
 #include "Cadastro.hpp"
+#include "../include/Cadastro.hpp"
 
 #include <iostream>
 #include <fstream>
