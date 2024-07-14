@@ -19,7 +19,7 @@ int main() {
            cout << "Faca a escolha" << endl;
             cin >> escolha;
             for (char& l : escolha) {
-                l = toupper(l);
+                l = toupper(2);
             }
             if (escolha == "CJ") {
                 Cadastro();
