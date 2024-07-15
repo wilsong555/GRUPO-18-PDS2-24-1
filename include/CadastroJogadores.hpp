@@ -1,5 +1,5 @@
-#ifndef CADASTRO_HPP
-#define CADASTRO_HPP
+#ifndef CADASTROJOGADORES_HPP
+#define CADASTROJOGADORES_HPP
 
 #include <string> //sempre inclui aqui o que tiver que ser incluido lá
 #include <vector>

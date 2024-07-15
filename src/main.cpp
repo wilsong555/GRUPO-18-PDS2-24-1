@@ -3,9 +3,8 @@
 #include <sstream>
 #include <string>
 #include <cctype>
-#include "../include/Cadastro.hpp"
-#include "../include/Tabuleiro.hpp"
-
+#include "../include/CadastroJogadores.hpp"
+#include "../include/Jogo.hpp"
 
 
 using namespace std;

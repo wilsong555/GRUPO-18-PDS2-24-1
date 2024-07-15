@@ -1,50 +1,59 @@
-# Compiler
+# Definições do compilador e flags
 CXX = g++
+CXXFLAGS = -std=c++11 -Wall -Wextra -Iinclude
 
-# Compiler flags
-CXXFLAGS = -Wall -Wextra -Iinclude
+# Diretivas
+all: bin/main.exe
 
-# Directories
-BINDIR = bin
-INCLUDEDIR = include
-OBJDIR = obj
-SRCDIR = src
+# Diretórios
+OBJ_DIR = obj
+BIN_DIR = bin
 
-# Target executable
-TARGET = $(BINDIR)/main.exe
+# Arquivos objeto
+OBJ = $(OBJ_DIR)/Jogo.o $(OBJ_DIR)/Reversi.o $(OBJ_DIR)/Lig4.o $(OBJ_DIR)/Jogador.o $(OBJ_DIR)/CadastroJogadores.o $(OBJ_DIR)/Partida.o $(OBJ_DIR)/main.o
 
-# Source files
-SOURCES = $(wildcard $(SRCDIR)/*.cpp)
+# Verificar se os diretórios obj e bin existem, se não, criá-los
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
 
-# Object files
-OBJECTS = $(patsubst $(SRCDIR)/%.cpp, $(OBJDIR)/%.o, $(SOURCES))
+$(BIN_DIR):
+	mkdir -p $(BIN_DIR)
 
-# OS detection
-ifeq ($(OS), Windows_NT)
-    MKDIR = if not exist $(1) mkdir $(1)
-    RM = -del /F /Q $(OBJDIR)\*.o $(BINDIR)\main.exe
-else
-    MKDIR = mkdir -p $(1)
-    RM = rm -rf $(OBJDIR)/*.o $(TARGET)
-endif
+# Regra para compilar o programa principal
+bin/main.exe: $(OBJ) | $(BIN_DIR)
+	$(CXX) $(CXXFLAGS) -o bin/main.exe $(OBJ)
 
-# Default target
-.PHONY: all clean
-all: $(TARGET)
-	@echo "Build complete!"
+# Regras para compilar arquivos objeto
+$(OBJ_DIR)/main.o: src/main.cpp include/Jogo.hpp include/Reversi.hpp include/Lig4.hpp include/Jogador.hpp include/CadastroJogadores.hpp include/Partida.hpp | $(OBJ_DIR)
+	$(CXX) $(CXXFLAGS) -c src/main.cpp -o $(OBJ_DIR)/main.o
 
-# Rule to build the target
-$(TARGET): $(OBJECTS)
-	$(call MKDIR,$(BINDIR))
-	$(CXX) $(CXXFLAGS) -o $@ $^
+$(OBJ_DIR)/Jogo.o: src/Jogo.cpp include/Jogo.hpp | $(OBJ_DIR)
+	$(CXX) $(CXXFLAGS) -c src/Jogo.cpp -o $(OBJ_DIR)/Jogo.o
 
-# Rule to build object files
-$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
-	$(call MKDIR,$(OBJDIR))
-	$(CXX) $(CXXFLAGS) -c -o $@ $<
+$(OBJ_DIR)/Reversi.o: src/Reversi.cpp include/Reversi.hpp include/Jogo.hpp  | $(OBJ_DIR)
+	$(CXX) $(CXXFLAGS) -c src/Reversi.cpp -o $(OBJ_DIR)/Reversi.o
 
-# Clean up build files
+$(OBJ_DIR)/Lig4.o: src/Lig4.cpp include/Lig4.hpp include/Jogo.hpp  | $(OBJ_DIR)
+	$(CXX) $(CXXFLAGS) -c src/Lig4.cpp -o $(OBJ_DIR)/Lig4.o
+
+$(OBJ_DIR)/Jogador.o: src/Jogador.cpp include/Jogador.hpp | $(OBJ_DIR)
+	$(CXX) $(CXXFLAGS) -c src/Jogador.cpp -o $(OBJ_DIR)/Jogador.o
+
+$(OBJ_DIR)/CadastroJogadores.o: src/CadastroJogadores.cpp include/CadastroJogadores.hpp include/Jogador.hpp | $(OBJ_DIR)
+	$(CXX) $(CXXFLAGS) -c src/CadastroJogadores.cpp -o $(OBJ_DIR)/CadastroJogadores.o
+
+$(OBJ_DIR)/Partida.o: src/Partida.cpp include/Partida.hpp include/Jogo.hpp include/Jogador.hpp | $(OBJ_DIR)
+	$(CXX) $(CXXFLAGS) -c src/Partida.cpp -o $(OBJ_DIR)/Partida.o
+
+# Limpar arquivos objeto e executável
 clean:
-	$(RM)
+	-del /Q $(OBJ_DIR)\*.o
+	
+	-del /Q $(BIN_DIR)\main.exe
 
-.PHONY: all clean
+# Diretiva personalizada para exibir mensagem
+exibeMensagem:
+	@echo "Exibe mensagem"
+
+# Diretiva para declarar phony targets
+.PHONY: all clean exibeMensagem

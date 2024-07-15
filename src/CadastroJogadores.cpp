@@ -1,5 +1,5 @@
-#include "Cadastro.hpp"
-#include "../include/Cadastro.hpp"
+#include "CadastroJogadores.hpp"
+#include "../include/CadastroJogadores.hpp"
 
 #include <iostream>
 #include <fstream>
@@ -48,7 +48,7 @@ Cadastro::Cadastro() {
             cout << "Jogador " << apelido << " cadastrado com sucesso" << endl;
         }
         else {
-            cout << "jogador repetido" << endl;
+            cout << "Jogador repetido" << endl;
         }
     }
     file.close(); 

@@ -1,5 +1,5 @@
-#ifndef TABULEIRO_HPP
-#define TABULEIRO_HPP
+#ifndef JOGO_HPP
+#define JOGO_HPP
 
 #include <iostream>
 #include <vector>
@@ -7,13 +7,13 @@
 
 using namespace std;
 
-class Tabuleiro {
+class Jogo {
     private:
     int linha, coluna;
     vector <vector <int>> matriz;
 
     public:
-    Tabuleiro(int linha, int coluna);
+    Jogo(int linha, int coluna);
     int getvalor_matrz();
     void setvalor(int linha, int coluna, string valor);
     void imprime();
