@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <vector>
+#include <string>
+
 
 
 using namespace std;
@@ -10,11 +12,12 @@ using namespace std;
 class Jogo {
     private:
     int linha, coluna;
-    vector <vector <int>> matriz;
+    vector <vector <string>> matriz;
 
     public:
+    //Jogo();
     Jogo(int linha, int coluna);
-    int getvalor_matrz();
+    string getvalor_matrz(int linha, int coluna) const;
     void setvalor(int linha, int coluna, string valor);
     void imprime();
 

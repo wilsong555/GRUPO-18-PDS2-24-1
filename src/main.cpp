@@ -11,9 +11,9 @@ using namespace std;
 
 int main() {
     string escolha, nome, apelido;
-    //  int linha, coluna;
-    //  string valor_tabuleiro = "1";
-    // Tabuleiro obj(linha, coluna);
+     int linha, coluna;
+     string valor_tabuleiro;
+  
     while (escolha != "FS") {
            cout << "Faca a escolha" << endl;
             cin >> escolha;
@@ -33,22 +33,21 @@ int main() {
                 return 0;
             }
 
-    //              else if (escolha == "T") {
-    //                 cout << "digite a lnha" << endl;
-    //                 cin >> linha;
-    //                 cout << "agora digite a coluna";
-    //                 cin >> coluna;
-    //                   if (linha <= 0 || coluna <= 0 || linha > 1000 || coluna > 1000) { // Limite arbitrário para evitar problemas
-    //     cout << "Erro: Linhas e colunas devem ser maiores que zero e menores que 1000." << endl;
-    //     return 1;
-    // }
+                 else if (escolha == "T") {
+                    cout << "digite  quantidade de lnhas: " << endl;
+                    cin >> linha;
+                    cout << "agora digite a quntidade de colunas: ";
+                    cin >> coluna;
 
-    //                  cout<< "escolha a linha e a coluna :";
-    //                 cin >> linha >> coluna;
-    //                 obj.setvalor(linha, coluna , valor_tabuleiro);
-    //                 obj.imprime();
+                     Jogo obj(linha, coluna);
+                     cout<< "escolha a linha e a coluna desejada :";
+                    cin >> linha >> coluna;
+                    cout << "Digite X ou O";
+                    cin >> valor_tabuleiro;
+                    obj.setvalor(linha - 1, coluna - 1 , valor_tabuleiro);
+                    obj.imprime();
             
-    // }
+    }
 
          }
         
