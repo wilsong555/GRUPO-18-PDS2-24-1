@@ -1,21 +1,13 @@
 #ifndef CADASTROJOGADORES_HPP
 #define CADASTROJOGADORES_HPP
 
-#include <string> //sempre inclui aqui o que tiver que ser incluido lá
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <string>
 #include <vector>
+#include <algorithm>
 using namespace std;
-
-class Cadastro {
-  public:
-    Cadastro();
-    static void remover_jogador(); //destrutor
-    static void listar_jogadores();
-
-  private:
-    string _nome;
-    string _apelido;
-    int _rev_vitoria, _rev_derrota, _lig_vitoria, _lig_derrota;
-};
 
 struct Jogador {
   string nome;
@@ -28,5 +20,16 @@ struct Jogador {
   vector<Jogador> LerArquivo(const string Arq_estatisticas);
 };
 
+class Cadastro {
+  public:
+    Cadastro();
+    string adicionar_jogador(string nome, string apelido);
+    bool remover_jogador(string apelido);
+    static void listar_jogadores();
+    bool verificar_jogador(string nome, string apelido);
+
+  private:
+    static bool verificaStrings(const string &apelido);
+};
 
 #endif
