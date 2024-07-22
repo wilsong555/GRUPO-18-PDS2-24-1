@@ -1,146 +1,143 @@
-#include "CadastroJogadores.hpp"
 #include "../include/CadastroJogadores.hpp"
 
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <string>
-#include <cctype>
-#include <vector>
-#include <algorithm>
+ bool Cadastro::verificaStrings(const string &apelido) {
+   fstream arquivo_base("estatisticas.txt", ios::in);
+   if (arquivo_base.is_open()) {
+     string linhas_texto, procura_apl;
+     while (getline(arquivo_base, linhas_texto)) {
+         stringstream info(linhas_texto);
+         info >> procura_apl;
+         if (procura_apl == apelido) {
+             return true; // jogador já existe
+         }
+     }
+   }
+   arquivo_base.close();
+   return false; // jogador não existe
+ }
 
-using namespace std;
+ Cadastro::Cadastro() {
+   //inicialização de obj
+ }
 
-bool VerificaStrings(const string apelido) { //verifica se um apelido já está cadastrado
-    string arq_txt = "estatisticas.txt";
-    ifstream arquivo(arq_txt);
-    if (arquivo.is_open()) {
-        string linha;
-        string procura;
-        while (getline(arquivo, linha)) {
-            stringstream ss(linha);
-            ss >> procura;
-            if (procura == apelido) {
-                arquivo.close();
-                return false; //jogador já existe
-            }
-        }
-    }
-    return true; //jogador não existe
-}
+ string Cadastro::adicionar_jogador(string nome, string apelido) {
+   if(verificaStrings(apelido)) {
+     return "Jogador já existe";
+   }
+   ofstream arquivo_base( "estatisticas.txt", ios::app);
+   if (!arquivo_base.is_open()) {
+     return "Erro ao abrir arquivo";
+   }
+   arquivo_base << apelido << " " << nome << endl;
+   arquivo_base << "REVERSI - V: 0 D: 0" << endl;
+   arquivo_base << "LIG4 - V: 0 D: 0" << endl;
+   arquivo_base.close();
+   return "Jogador cadastrado com sucesso";
+ }
 
-Cadastro::Cadastro() {
-    string apelido, nome;
-    string arq_txt = "estatisticas.txt";
-    ofstream file(arq_txt, ios::app); //abre o arquivo para escrita sempre com o ponteiro no fim do arquivo
-    if (file.is_open()) {
-        cout << "Digite os dados: " << endl;
-        cin >> apelido >> nome;
-        bool verifica = VerificaStrings(apelido); //verifica se o apelido já existe
-        if (verifica == true) {
-            _rev_vitoria = 0;
-            _rev_derrota = 0;
-            _lig_vitoria = 0;
-            _lig_derrota = 0;
-            file << apelido << " " << nome << endl; //adiciona o jogador
-            file << "REVERSI - V: " << _rev_vitoria << " D: " << _rev_derrota << endl;
-            file << "LIG4 - V:" << _lig_vitoria << " D:" << _lig_derrota << endl;
-            cout << "Jogador " << apelido << " cadastrado com sucesso" << endl;
-        }
-        else {
-            cout << "Jogador repetido" << endl;
-        }
-    }
-    file.close(); 
-} //implementação completa
+ bool Cadastro::remover_jogador(string apelido) {
+   if(!verificaStrings(apelido)) {
+     return false; // jogador não existe
+   }
+   fstream arquivo_base("estatisticas.txt", ios::in);
+   fstream arquivo_temporario("temp.txt", ios::app);
+   if (arquivo_base.is_open() && arquivo_temporario.is_open()) {
+     string linhas_texto, procura_apl;
+     while (getline(arquivo_base, linhas_texto)) {
+       stringstream leitura(linhas_texto);
+       leitura >> procura_apl;
+       if (procura_apl != apelido) {
+         arquivo_temporario << linhas_texto << endl;
+       }
+       else {
+         getline(arquivo_base, linhas_texto); //apaga reversi
+         getline(arquivo_base, linhas_texto); //apaga lig4
+       }
+     }
+   }
+   arquivo_base.close();
+   arquivo_temporario.close();
+   remove("estatisticas.txt");
+   rename("temp.txt", "estatisticas.txt");
+   return true;
+ }
 
-void Cadastro::remover_jogador() {
-    string apelido; 
-    string remocao_apelido; 
-    bool jogador = false; //determina se o apelido foi encontrado
-    string linha; //usada para leitura do arquivo
-    
-    string arq_txt = "estatisticas.txt";
-    string arq_temporario = "temp.txt";
-    ifstream arquivo(arq_txt); //abertura do arquivo principal pra leitura
-    ofstream temp(arq_temporario); //abertura do arquivo temporário pra escrita
-    
-    if (arquivo.is_open() && temp.is_open()) {
-        cout << "Digite o apelido: ";
-        cin >> apelido;
-        while (getline(arquivo, linha)) { //leitura do arquivo principal
-            stringstream ss(linha); //cria um fluxo de string
-            ss >> remocao_apelido; //armazena a primeira palavra (apelido) da linha atual
-            if (linha.find(apelido) == string::npos) { // linha não contem o apelido digitado
-                temp << linha << endl;
-            }
-            else { //linha contem o apelido digitado
-                jogador = true;
-                getline(arquivo, linha); //apaga a linha do reversi
-                getline(arquivo, linha); //apaga a linha do lig4
-                cout << "Jogador " << apelido << " removido com sucesso" << endl;
-            }
-        }
-    }
-    if (jogador == false) {
-        cout << "Jogador inexistente" << endl;
-    }
-    arquivo.close();
-    temp.close();
-    remove(arq_txt.c_str()); //remove o arquivo principal
-    rename(arq_temporario.c_str(), arq_txt.c_str()); //renomeia o arquivo temporário com o nome do principal
-} // implementação completa
+ bool Cadastro::verificar_jogador(string nome, string apelido) {
+   fstream arquivo_base("estatisticas.txt", ios::in);
+   if (arquivo_base.is_open()) {
+     string linhas_texto, procura_apl, procura_nom;
+     while (getline(arquivo_base, linhas_texto)) {
+       stringstream leitura(linhas_texto);
+       leitura >> procura_apl >> procura_nom;
+       if (procura_apl == apelido && procura_nom == nome) {
+         return true; // jogador já existe
+       }
+       else if (procura_apl == apelido || procura_nom == nome) {
+         cout << "Dados incorretos" << endl;
+         return false; // alguma informação incorreta
+       }
+       else {
+         if (!verificaStrings(apelido)) {
+           return false; // jogador não existe
+         }
+       }
+     }
+   }
+   return false;
+ }
 
-vector<Jogador> LerArquivo (const string Arq_estatisticas) {
-    ifstream arquivo(Arq_estatisticas);
-    vector<Jogador> jogadores;
-    string linha;
-    while (getline(arquivo, linha)) {
-        istringstream iss(linha);
-        Jogador jogador;
-        iss >> jogador.apelido >> jogador.nome;
-        getline (arquivo, jogador.Reversi);
-        getline (arquivo, jogador.Lig4);
-        jogadores.push_back(jogador);
-    }
-    return jogadores;
-}
+ vector<Jogador> LerArquivo (const string Arq_estatisticas) {
+     ifstream arquivo(Arq_estatisticas);
+     vector<Jogador> jogadores;
+     string linha;
+     while (getline(arquivo, linha)) {
+         istringstream obj(linha);
+         Jogador jogador;
+         obj >> jogador.apelido >> jogador.nome;
+         getline (arquivo, jogador.Reversi);
+         getline (arquivo, jogador.Lig4);
+         jogadores.push_back(jogador);
+     }
+     return jogadores;
+ }
 
-string toLower(const string &str) {
-    string lowerStr = str;
-    transform(lowerStr.begin(), lowerStr.end(), lowerStr.begin(), [](unsigned char c) { return tolower(c); });
-    return lowerStr;
-}
+ string toLower(const string &str) {
+   string lowerStr = str;
+   transform(lowerStr.begin(), lowerStr.end(), lowerStr.begin(), [](unsigned char c) { return tolower(c); });
+   return lowerStr;
+ }
 
-bool compararNome(const Jogador &a, const Jogador &b) {
-    return toLower(a.nome) < toLower(b.nome);
-}
+ bool compararNome(const Jogador &a, const Jogador &b) {
+ return toLower(a.nome) < toLower(b.nome);
+ }
 
-bool compararApelido(const Jogador &a, const Jogador &b) {
-    return toLower(a.apelido) < toLower(b.apelido);
-}
+ bool compararApelido(const Jogador &a, const Jogador &b) {
+ return toLower(a.apelido) < toLower(b.apelido);
+ }
 
-
-void Cadastro::listar_jogadores() {
-    cout << "Escolha a ordem: ";
-    char ordem;
-    cin >> ordem;
-    string arq_txt = "estatisticas.txt";
-    vector<Jogador> jogadores = LerArquivo(arq_txt);
-    if (ordem == 'A') {
-        sort(jogadores.begin(), jogadores.end(), compararApelido);
-        for (const auto &jogador : jogadores) {
-            cout << jogador.apelido << " " << jogador.nome << endl;
-            cout << jogador.Reversi << endl;
-            cout << jogador.Lig4 << endl;
-        }
-    }
-    else if (ordem == 'N') {
-        sort(jogadores.begin(), jogadores.end(), compararNome);
-        for (const auto &jogador : jogadores) {
-            cout << jogador.apelido << " " << jogador.nome << endl;
-            cout << jogador.Reversi << endl;
-            cout << jogador.Lig4 << endl;
-        }
-    }
-}   
+ void Cadastro::listar_jogadores() {
+   cout << "Escolha a ordem (a ou n): ";
+   char ordem;
+   cin >> ordem;
+   string arquivo_base = "estatisticas.txt";
+   vector<Jogador> jogadores = LerArquivo(arquivo_base);
+   if (ordem == 'a') {
+       sort(jogadores.begin(), jogadores.end(), compararApelido);
+       for (const auto &jogador : jogadores) {
+         cout << "-----------------------------" << endl;
+         cout << jogador.apelido << " " << jogador.nome << endl;
+         cout << jogador.Reversi << endl;
+         cout << jogador.Lig4 << endl;
+       }
+   }
+   else if (ordem == 'n') {
+       sort(jogadores.begin(), jogadores.end(), compararNome);
+       for (const auto &jogador : jogadores) {
+         cout << "-----------------------------" << endl;
+         cout << jogador.apelido << " " << jogador.nome << endl;
+         cout << jogador.Reversi << endl;
+         cout << jogador.Lig4 << endl;
+       }
+   }
+   cout << "-----------------------------" << endl;
+ }
