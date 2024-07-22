@@ -1,4 +1,3 @@
-#include "Jogo.hpp"
 #include "../include/Jogo.hpp"
 
 using namespace std;
@@ -20,16 +19,20 @@ if (linha <= 0 || coluna <= 0 || linha > 1000 || coluna > 1000) { // Limite arbi
 
 };
 
-string Jogo::getvalor_matrz(int linha, int coluna) const {
+string Jogo::getvalor_matriz(int linha, int coluna) const {
     return matriz[linha][coluna];
 };
 
-void Jogo::setvalor(int lnha, int coluna, string valor) {
-    if (lnha >= 0 && lnha < linha && coluna >= 0 && coluna < this->coluna) {
-        matriz[lnha][coluna] = valor;
-    } else {
-        std::cerr << "Erro: Posição inválida." << std::endl;
-    }
+int Jogo::get_linhas() const{
+    return linha;
+}
+
+int Jogo::get_colunas() const {
+    return coluna;
+}
+
+void Jogo::setvalor(int linha_atual, int coluna_atual, string valor) {
+    matriz[linha_atual][coluna_atual] = valor;
 }
 
 void Jogo::imprime() {
