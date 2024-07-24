@@ -16,10 +16,11 @@ int main() {
     Cadastro novo_cadastro;
     while (escolha != "FS") {
            cout << "Faca a escolha" << endl;
-            cin >> escolha;
-            for (char& l : escolha) {
-                l = toupper(l);
-            }
+            // cin >> escolha;
+            // for (char& l : escolha) {
+            //     l = toupper(l);
+            // }
+            escolha = "CP";
             if (escolha == "CJ") {
                 cout << "Digite o nome e o apelido: ";
                 cin >> nome >> apelido;
@@ -42,13 +43,18 @@ int main() {
                 string apl1, nome1, apl2, nome2, jogo;
                 
                 cout << "Digite L para Lig4 ou R para Reversi: ";
-                cin >> jogo;
-                cout << "Digite o nome e o nick do jogador 1: " << endl;
-                cin >> apl1 >> nome1;
-                cout << "Digite o nome e o nick do jogador 2: " << endl;
-                cin >> apl2 >> nome2;
-                if (jogo == "L") {
-                    if (novo_cadastro.verificar_jogador(nome, apelido)) {
+                // cin >> jogo;
+                jogo = 'l';
+                // cout << "Digite o nick e o nome do jogador 1: " << endl;
+                // cin >> apl1 >> nome1;
+                // cout << "Digite o nick e nome do jogador 2: " << endl;
+                // cin >> apl2 >> nome2;
+                apl1 = "Lua";
+                nome1 = "Luana";
+                apl2 = "opio";
+                nome2 = "Marcos";
+                if (jogo == "l") {
+                    if (novo_cadastro.verificar_jogador(nome1, apl1) && novo_cadastro.verificar_jogador(nome2, apl2)) {
                         Partida nova_partida(jogo, apl1, apl2);
                         nova_partida.iniciar_jogo();
                     }

@@ -9,15 +9,15 @@
 #include <algorithm>
 using namespace std;
 
-struct Jogador {
+struct Pessoa {
   string nome;
   string apelido;
   string Reversi;
   string Lig4;
 
-  bool compararApelido(const Jogador &jogador1, const Jogador &jogador2);
-  bool compararNome(const Jogador &jogador1, const Jogador &jogador2);
-  vector<Jogador> LerArquivo(const string Arq_estatisticas);
+  bool compararApelido(const Pessoa &jogador1, const Pessoa &jogador2);
+  bool compararNome(const Pessoa &jogador1, const Pessoa &jogador2);
+  vector<Pessoa> LerArquivo(const string Arq_estatisticas);
 };
 
 class Cadastro {

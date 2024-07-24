@@ -83,16 +83,17 @@
        }
      }
    }
+   cout << "Fim da verificação" << endl;
    return false;
  }
 
- vector<Jogador> LerArquivo (const string Arq_estatisticas) {
+ vector<Pessoa> LerArquivo (const string Arq_estatisticas) {
      ifstream arquivo(Arq_estatisticas);
-     vector<Jogador> jogadores;
+     vector<Pessoa> jogadores;
      string linha;
      while (getline(arquivo, linha)) {
          istringstream obj(linha);
-         Jogador jogador;
+         Pessoa jogador;
          obj >> jogador.apelido >> jogador.nome;
          getline (arquivo, jogador.Reversi);
          getline (arquivo, jogador.Lig4);
@@ -107,20 +108,20 @@
    return lowerStr;
  }
 
- bool compararNome(const Jogador &a, const Jogador &b) {
+ bool compararNome(const Pessoa &a, const Pessoa &b) {
  return toLower(a.nome) < toLower(b.nome);
  }
 
- bool compararApelido(const Jogador &a, const Jogador &b) {
+ bool compararApelido(const Pessoa &a, const Pessoa &b) {
  return toLower(a.apelido) < toLower(b.apelido);
  }
 
- void Cadastro::listar_jogadores() {
+void Cadastro::listar_jogadores() {
    cout << "Escolha a ordem (a ou n): ";
    char ordem;
    cin >> ordem;
    string arquivo_base = "estatisticas.txt";
-   vector<Jogador> jogadores = LerArquivo(arquivo_base);
+   vector<Pessoa> jogadores = LerArquivo(arquivo_base);
    if (ordem == 'a') {
        sort(jogadores.begin(), jogadores.end(), compararApelido);
        for (const auto &jogador : jogadores) {

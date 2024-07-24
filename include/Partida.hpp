@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <string>
+#include "CadastroJogadores.hpp"
+#include "Jogador.hpp"
 using namespace std;
 
 class Partida {

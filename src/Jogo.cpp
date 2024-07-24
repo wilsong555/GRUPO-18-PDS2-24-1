@@ -13,7 +13,7 @@ if (linha <= 0 || coluna <= 0 || linha > 1000 || coluna > 1000) { // Limite arbi
      matriz.resize(linha, vector<string>(coluna));
     for (int i = 0; i < linha; ++i) {
         for (int j = 0; j < coluna; ++j) {
-            matriz[i][j] = "0";
+            matriz[i][j] = " ";
         }
     }
 
@@ -38,7 +38,7 @@ void Jogo::setvalor(int linha_atual, int coluna_atual, string valor) {
 void Jogo::imprime() {
     for (int i = 0; i < linha; ++i) {
         for (int j = 0; j < coluna;++j) {
-            cout << matriz[i][j] << " "; // Corrigido para usar índices corretos
+            cout << "| " << matriz[i][j] << " "; // Corrigido para usar índices corretos
         }
         cout << endl;
     }

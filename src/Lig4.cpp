@@ -4,22 +4,24 @@
 #include <iostream>
 using namespace std;
 
-void Lig4::jogar(int coluna, string jogador) {
-  if(coluna >= 0 && coluna < this->get_colunas()) {
-    for (int i = this->get_linhas() - 1; i >= 0; --i) {
-      if (this->getvalor_matriz(i, coluna) == "0") {
-        this->setvalor(i, coluna, jogador);
-        return;
-      }
+bool Lig4::jogar(int coluna, string jogador) {
+    if(coluna >= 0 && coluna < this->get_colunas()) {
+        for (int i = this->get_linhas() - 1; i >= 0; --i) {
+          if (this->getvalor_matriz(i, coluna) == " ") {
+            this->setvalor(i, coluna, jogador);
+            return true;
+          }
+        }    
     }
-  }
+    cout << "Coluna cheia, tente outra." << endl;
+    return false;
 }
 
 bool Lig4::verificar_vencedor() {
     // Verificar todas as direções para cada célula do tabuleiro
     for (int linha = 0; linha < this->get_linhas(); ++linha) {
         for (int coluna = 0; coluna < this->get_colunas(); ++coluna) {
-            if (this->getvalor_matriz(linha, coluna) != "0") {
+            if (this->getvalor_matriz(linha, coluna) != " ") {
                 string jogador = this->getvalor_matriz(linha, coluna);
                 // Verificação Horizontal
                 if (coluna <= this->get_colunas() - 4 && 
