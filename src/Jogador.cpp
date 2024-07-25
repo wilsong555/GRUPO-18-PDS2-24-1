@@ -1,7 +1,5 @@
 #include "../include/Jogador.hpp"
 
-// Jogador();
-// bool mudar_estatistica_atual(string apelido, string this->_jogo_atual);
 
 int is_num(string &achar_num) {
     int numero;
