@@ -4,6 +4,17 @@
 #include <iostream>
 using namespace std;
 
+bool Lig4::empate() const {
+    for (int i = 0; i < this->get_linhas(); i++) {
+        for (int c = 0; c < this->get_colunas(); c++) {
+            if (this->getvalor_matriz(i, c) == " "){
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
 bool Lig4::jogar(int coluna, string valor) {
     if(coluna >= 0 && coluna < this->get_colunas()) {
         for (int i = this->get_linhas() - 1; i >= 0; --i) {
@@ -16,6 +27,8 @@ bool Lig4::jogar(int coluna, string valor) {
     cout << "Coluna cheia, tente outra." << endl;
     return false;
 }
+
+
 
 bool Lig4::verifica_direcao(int linha, int coluna, int dir_linha, int dir_coluna) {
     string valor = this->getvalor_matriz(linha, coluna);
@@ -31,34 +44,43 @@ bool Lig4::verifica_direcao(int linha, int coluna, int dir_linha, int dir_coluna
     return true;
 }
 
-bool Lig4::verificar_vencedor() {
+void Lig4::verificar_vencedor() {
     for (int linha = 0; linha < this->get_linhas(); ++linha) {
         for (int coluna = 0; coluna < this->get_colunas(); ++coluna) {
             if (this->getvalor_matriz(linha, coluna) != " ") {
                 // Verificação Horizontal
                 if (coluna <= this->get_colunas() - 4 &&
                     verifica_direcao(linha, coluna, 0, 1)) {
-                    return true;
+                    this->set_status('v');
+                    return;
                 }
                 // Verificação Vertical
                 if (linha <= this->get_linhas() - 4 &&
                     verifica_direcao(linha, coluna, 1, 0)) {
-                    return true;
+                    this->set_status('v');
+                    return;
                 }
                 // Verificação Diagonal Crescente
                 if (linha <= this->get_linhas() - 4 && coluna <= this->get_colunas() - 4 &&
                     verifica_direcao(linha, coluna, 1, 1)) {
-                    return true;
+                    this->set_status('v');
+                    return;
                 }
                 // Verificação Diagonal Decrescente
                 if (linha >= 3 && coluna <= this->get_colunas() - 4 &&
                     verifica_direcao(linha, coluna, -1, 1)) {
-                    return true;
+                    this->set_status('v');
+                    return;
                 }
             }
         }
     }
-    return false;
+    if (this->empate() == true) {
+        this->set_status('e');
+    }
+    else {
+        this->set_status('i');
+    }
 }
 
 
