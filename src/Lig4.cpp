@@ -24,6 +24,10 @@ bool Lig4::jogar(int coluna, string valor) {
           }
         }    
     }
+    else {
+        cout << "Coluna inválida, tente outra." << endl;
+        return false;
+    }
     cout << "Coluna cheia, tente outra." << endl;
     return false;
 }
@@ -82,5 +86,14 @@ void Lig4::verificar_vencedor() {
         this->set_status('i');
     }
 }
+
+void Lig4::imprime() const{
+    for (int i = 0; i < this->get_linhas(); i++) {
+        for (int j = 0; j < this->get_colunas(); j++) {
+            cout << "| " << this->getvalor_matriz(i, j) << " |"; // Corrigido para usar índices corretos
+        }
+        cout << endl;
+    }
+};
 
 

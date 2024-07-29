@@ -34,12 +34,3 @@ void Jogo::set_status(char n_status) {
 void Jogo::setvalor(int linha_atual, int coluna_atual, string valor) {
     matriz[linha_atual][coluna_atual] = valor;
 }
-
-void Jogo::imprime() {
-    for (int i = 0; i < linha; i++) {
-        for (int j = 0; j < coluna; j++) {
-            cout << "| " << matriz[i][j] << " |"; // Corrigido para usar índices corretos
-        }
-        cout << endl;
-    }
-};

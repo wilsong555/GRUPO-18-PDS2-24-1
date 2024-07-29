@@ -22,7 +22,7 @@ class Jogo {
     void set_status(char n_status);
     void setvalor(int linha, int coluna, string valor);
     virtual void verificar_vencedor() = 0;
-    void imprime();
+    virtual void imprime() const = 0;
 
 };
 
