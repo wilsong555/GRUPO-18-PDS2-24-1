@@ -1,4 +1,4 @@
-#include <iostream>
+/*#include <iostream>
 #include <fstream>
 #include <sstream>
 #include <string>
@@ -66,4 +66,46 @@ int main() {
             }
          }
     return 0;
+}*/
+#include <iostream>
+#include <memory>
+#include "../include/Jogo.hpp"
+#include "../include/Reversi.hpp"
+#include "../include/Lig4.hpp"
+
+int main() {
+    int escolha;
+    std::cout << "Escolha o jogo: 1. Reversi 2. Lig4: ";
+    std::cin >> escolha;
+
+    std::unique_ptr<Jogo> jogo;
+    if (escolha == 1) {
+        jogo = std::make_unique<Reversi>();
+    } else {
+        jogo = std::make_unique<Lig4>();
+    }
+
+    Peca jogadorAtual = Peca::Preto;
+
+    while (true) {
+        jogo->exibir();
+
+        int linha, coluna;
+        jogo->lerJogada(linha, coluna);
+
+        if (jogo->movimentoValido(linha, coluna)) {
+            jogo->aplicarMovimento(linha, coluna, jogadorAtual);
+            if (jogo->verificarVitoria(jogadorAtual)) {
+                jogo->exibir();
+                std::cout << "Jogador " << (jogadorAtual == Peca::Preto ? "Preto" : "Branco") << " venceu!\n";
+                break;
+            }
+            jogadorAtual = (jogadorAtual == Peca::Preto) ? Peca::Branco : Peca::Preto;
+        } else {
+            std::cout << "Movimento inválido. Tente novamente.\n";
+        }
+    }
+
+    return 0;
 }
+

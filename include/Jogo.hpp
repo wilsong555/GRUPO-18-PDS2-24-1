@@ -1,4 +1,4 @@
-#ifndef JOGO_HPP
+/*#ifndef JOGO_HPP
 #define JOGO_HPP
 
 #include <iostream>
@@ -28,4 +28,22 @@ class Jogo {
 
 
 
-#endif
+#endif*/
+#ifndef JOGO_HPP
+#define JOGO_HPP
+
+enum class Peca { Vazia, Preto, Branco, Amarelo, Vermelho };
+
+class Jogo {
+public:
+    virtual ~Jogo() = default;
+
+    virtual void exibir() const = 0;
+    virtual bool movimentoValido(int linha, int coluna) const = 0;
+    virtual void aplicarMovimento(int linha, int coluna, Peca jogador) = 0;
+    virtual bool verificarVitoria(Peca jogador) const = 0;
+    virtual void lerJogada(int& linha, int& coluna) const = 0;
+};
+
+#endif // JOGO_HPP
+

@@ -2,18 +2,20 @@
 #define LIG4_HPP
 
 #include "Jogo.hpp"
-#include <iostream>
-#include <string>
-
-using namespace std;
+#include <vector>
 
 class Lig4 : public Jogo {
-  public:
-    Lig4(int num_linha, int num_coluna) : Jogo(num_linha, num_coluna) {}
-    bool jogar(int coluna, string jogador);
-    bool verifica_direcao(int linha, int coluna, int dir_linha, int dir_coluna);
-    void verificar_vencedor() override;
-    bool empate() const;
+private:
+    std::vector<std::vector<Peca>> grid;
+
+public:
+    Lig4();
+
+    void exibir() const override;
+    bool movimentoValido(int linha, int coluna) const override;
+    void aplicarMovimento(int linha, int coluna, Peca jogador) override;
+    bool verificarVitoria(Peca jogador) const override;
+    void lerJogada(int& linha, int& coluna) const override;
 };
 
-#endif
+#endif // LIG4_HPP
