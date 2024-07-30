@@ -25,8 +25,8 @@ void Partida::iniciar_jogo() {
     partida_lig4(nova_partida);
 
   }
-  else if (_t_jogo == "R") {
-    //crio o objeto REVERSI e começo o jogo
+  else if (_t_jogo == "r") {
+    partida_reversi();
   }
 }
 
@@ -54,6 +54,40 @@ void Partida::partida_lig4(Lig4 nova_partida) {
     else if (nova_partida.get_status() == 'e') {
       cout << "Empates não gera pontos" << endl;
     }
+}
+
+void Partida::partida_reversi() {
+    cout << "iniciou partida" << endl;
+    Tabuleiro tabuleiro;
+    Peca jogadorAtual = Peca::Preto;
+
+    while (true) {
+        tabuleiro.exibir();
+
+        if (!tabuleiro.temMovimentoValido(jogadorAtual)) {
+            cout << "Jogador " << (jogadorAtual == Peca::Preto ? "Preto" : "Branco") << " nao tem movimentos validos. Passando a vez.\n";
+            jogadorAtual = (jogadorAtual == Peca::Preto) ? Peca::Branco : Peca::Preto;
+            if (!tabuleiro.temMovimentoValido(jogadorAtual)) {
+                cout << "Nenhum jogador tem movimentos validos.\n O jogo acabou.\n";
+                break;
+            }
+        }
+
+        int linha, coluna;
+        cout << "Jogador " << (jogadorAtual == Peca::Preto ? "Preto" : "Branco") << ", insira sua jogada (linha coluna): ";
+        cin >> linha >> coluna;
+
+        linha -= 1;
+        coluna -= 1;
+
+        if (tabuleiro.movimentoValido(linha, coluna, jogadorAtual)) {
+            tabuleiro.aplicarMovimento(linha, coluna, jogadorAtual);
+            jogadorAtual = (jogadorAtual == Peca::Preto) ? Peca::Branco : Peca::Preto;
+        } else {
+            cout << "Movimento invalido. Tente novamente.\n";
+        }
+    }
+    tabuleiro.imprimirVencedor();
 }
 
 
