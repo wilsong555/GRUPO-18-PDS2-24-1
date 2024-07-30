@@ -1,4 +1,4 @@
-#ifndef CADASTROJOGADORES_HPP
+/*#ifndef CADASTROJOGADORES_HPP
 #define CADASTROJOGADORES_HPP
 
 #include <iostream>
@@ -32,4 +32,4 @@ class Cadastro {
     static bool verificaStrings(const string &apelido);
 };
 
-#endif
+#endif*/

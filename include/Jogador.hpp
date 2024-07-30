@@ -1,4 +1,4 @@
-#ifndef JOGADOR_HPP
+/*#ifndef JOGADOR_HPP
 #define JOGADOR_HPP
 #include <iostream>
 #include <string>
@@ -19,4 +19,4 @@ class Jogador {
         string _jogo_atual;
 };
 
-#endif
+#endif*/

@@ -1,4 +1,4 @@
-#include "../include/Jogador.hpp"
+/*#include "../include/Jogador.hpp"
 
 
 int is_num(string &achar_num) {
@@ -73,4 +73,4 @@ bool Jogador::mudar_estatistica_atual() {
     remove("estatisticas.txt");
     rename("estat_temp.txt", "estatisticas.txt");
     return true;
-}
+}*/

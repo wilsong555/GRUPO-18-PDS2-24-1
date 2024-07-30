@@ -1,4 +1,4 @@
-#ifndef PARTIDA_HPP
+/*#ifndef PARTIDA_HPP
 #define PARTIDA_HPP
 
 #include <iostream>
@@ -21,3 +21,4 @@ class Partida {
 };
 
 #endif
+*/
