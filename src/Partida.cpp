@@ -62,7 +62,7 @@ void Partida::partida_reversi() {
     Peca jogadorAtual = Peca::Preto;
 
     while (true) {
-        tabuleiro.exibir();
+        tabuleiro.imprime();
 
         if (!tabuleiro.temMovimentoValido(jogadorAtual)) {
             cout << "Jogador " << (jogadorAtual == Peca::Preto ? "Preto" : "Branco") << " nao tem movimentos validos. Passando a vez.\n";
@@ -87,7 +87,7 @@ void Partida::partida_reversi() {
             cout << "Movimento invalido. Tente novamente.\n";
         }
     }
-    tabuleiro.imprimirVencedor();
+    tabuleiro.verificar_vencedor();
 }
 
 

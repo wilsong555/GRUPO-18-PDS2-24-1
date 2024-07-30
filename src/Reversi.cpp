@@ -19,7 +19,7 @@ void Tabuleiro::setPeca(int linha, int coluna, Peca peca) {
     grid[linha][coluna] = peca;
 }
 
-void Tabuleiro::exibir() const {
+void Tabuleiro::imprime() const {
     std::cout << "  1 2 3 4 5 6 7 8\n"; // Cabeçalho das colunas
     for (int i = 0; i < 8; ++i) {
         std::cout << i + 1 << ' '; // Cabeçalho das linhas
@@ -125,7 +125,7 @@ std::pair<int, int> Tabuleiro::contarPecas() const {
     return {contagemPreto, contagemBranco};
 }
 
-void Tabuleiro::imprimirVencedor() const {
+void Tabuleiro::verificar_vencedor() {
     std::pair<int, int> contagem = contarPecas();
     int contagemPreto = contagem.first;
     int contagemBranco = contagem.second;
