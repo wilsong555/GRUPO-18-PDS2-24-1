@@ -33,6 +33,7 @@ void Jogo::set_status(char n_status) {
 
 void Jogo::setvalor(int linha_atual, int coluna_atual, string valor) {
     matriz[linha_atual][coluna_atual] = valor;
+<<<<<<< HEAD
 }
 
 void Jogo::imprime() {
@@ -43,3 +44,6 @@ void Jogo::imprime() {
         cout << endl;
     }
 };*/
+=======
+}
+>>>>>>> 78fb2f205e2e98b6c7b0f7577a532248d0c26212

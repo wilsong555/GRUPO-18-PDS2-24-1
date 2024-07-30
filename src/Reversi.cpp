@@ -3,10 +3,17 @@
 #include <iostream>
 
 Reversi::Reversi() : grid(8, std::vector<Peca>(8, Peca::Vazia)) {
+    // configuração inicial
     grid[3][3] = Peca::Branco;
     grid[3][4] = Peca::Preto;
     grid[4][3] = Peca::Preto;
     grid[4][4] = Peca::Branco;
+}
+Peca operator()(int linha, int coluna) const {
+        return grid[linha][coluna];
+}
+void setPeca(int linha, int coluna, Peca peca) {
+        grid[linha][coluna] = peca;
 }
 
 void Reversi::exibir() const {

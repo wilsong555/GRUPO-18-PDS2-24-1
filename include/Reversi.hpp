@@ -1,22 +1,26 @@
-#ifndef REVERSI_HPP
-#define REVERSI_HPP
+// reversi.hpp
+#ifndef REVERSE_HPP
+#define REVERSE_HPP
 
-#include "Jogo.hpp"
+#include <iostream>
 #include <vector>
 
-class Reversi : public Jogo {
+enum class Peca { Vazia, Preto, Branco };
+
+class Tabuleiro {
 private:
     std::vector<std::vector<Peca>> grid;
 
 public:
-    Reversi();
-
-    void exibir() const override;
-    bool movimentoValido(int linha, int coluna) const override;
-    void aplicarMovimento(int linha, int coluna, Peca jogador) override;
-    bool verificarVitoria(Peca jogador) const override;
-    void lerJogada(int& linha, int& coluna) const override;
+    Tabuleiro();
+    Peca operator()(int linha, int coluna) const;
+    void setPeca(int linha, int coluna, Peca peca);
+    void exibir() const;
     bool temMovimentoValido(Peca jogador) const;
+    bool movimentoValido(int linha, int coluna, Peca jogador) const;
+    void aplicarMovimento(int linha, int coluna, Peca jogador);
+	std::pair<int, int> contarPecas() const; // Novo método
+    void imprimirVencedor() const; // Novo método
 };
 
 #endif // REVERSI_HPP
