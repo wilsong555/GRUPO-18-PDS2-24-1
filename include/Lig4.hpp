@@ -15,7 +15,7 @@ class Lig4 : public Jogo {
     void verificar_vencedor() override;
     bool empate() const;
     void imprime() const override;
-    //comentario
+    void removerjogada(int coluna);
 };
 
 #endif

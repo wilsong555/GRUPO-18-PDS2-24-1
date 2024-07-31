@@ -15,12 +15,15 @@ class Partida {
     void iniciar_jogo();
     void partida_lig4(Lig4 nova_partida);
     void partida_reversi();
+
+    void setContraIA(bool contraIA) {_contraIA = _contraIA; }
     string get_apl1() const;
     string get_apl2() const;
     //comentario
 
   private:
     string _t_jogo, _apl1, _apl2;
+    bool _contraIA;
 };
 
 #endif

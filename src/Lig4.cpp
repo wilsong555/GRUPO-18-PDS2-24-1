@@ -26,7 +26,6 @@ bool Lig4::jogar(int coluna, string valor) {
     return false;
 }
 
-
 bool Lig4::verifica_direcao(int linha, int coluna, int dir_linha, int dir_coluna) {
     string valor = this->getvalor_matriz(linha, coluna);
     for (int i = 1; i < 4; ++i) {
@@ -88,3 +87,12 @@ void Lig4::imprime() const{
         cout << endl;
     }
 };
+
+void Lig4::removerjogada(int coluna) {
+    for (int i = 0; i < this->get_linhas(); i++) {
+        if (this->getvalor_matriz(i, coluna) != " ") {
+            this->setvalor(i, coluna, " ");
+            break;
+        }
+    }
+}

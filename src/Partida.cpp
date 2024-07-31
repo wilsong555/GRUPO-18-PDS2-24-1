@@ -1,4 +1,5 @@
 #include "../include/Partida.hpp"
+#include "../include/Ia.hpp"
 #include <limits>
 
 
@@ -24,6 +25,12 @@ void Partida::iniciar_jogo() {
     }
     Lig4 nova_partida(n_linha, n_coluna);
     partida_lig4(nova_partida);
+
+    char contraIA;
+    cout << "Deseja jogar contra a IA? (S/N): ";
+    cin >> contraIA;
+    
+    _contraIA = (contraIA == 'S');
 
   }
   else if (_t_jogo == "r") {
@@ -54,13 +61,24 @@ int define_coluna(const string& jogador_atual) {
 void Partida::partida_lig4(Lig4 nova_partida) {
   bool jogador_turno = true; //jogador 1 e true, jogador 2 e false
   nova_partida.set_status('i');
+  int coluna;
+
+  IA ia("X", "Y");
+
     while (nova_partida.get_status() == 'i') {
-      string jogador_atual = (jogador_turno ? this->get_apl1() : this->get_apl2());
-      int coluna = define_coluna(jogador_atual);
-      if (nova_partida.jogar(coluna, (jogador_turno ? "X" : "Y"))) { //se a jogada não for o laço se reinicia sem alterar o turno
-        nova_partida.imprime(); 
-        nova_partida.verificar_vencedor(); 
-        jogador_turno = (jogador_turno ? false : true); //se o jogador atual for true então o proximo deve ser false, tendo assim a troca de turno
+      if (_contraIA && !jogador_turno) {
+        coluna = ia.encontrarMelhorJogada(nova_partida);
+        cout << "IA jogou na coluna " << coluna + 1 << endl;
+        jogador_turno = (jogador_turno ? false : true);
+      }
+      else {
+        string jogador_atual = (jogador_turno ? this->get_apl1() : this->get_apl2());
+        coluna = define_coluna(jogador_atual);
+        if (nova_partida.jogar(coluna, (jogador_turno ? "X" : "Y"))) { //se a jogada não for o laço se reinicia sem alterar o turno
+          nova_partida.imprime(); 
+          nova_partida.verificar_vencedor(); 
+          jogador_turno = (jogador_turno ? false : true); //se o jogador atual for true então o proximo deve ser false, tendo assim a troca de turno
+        }
       }
     }
 
