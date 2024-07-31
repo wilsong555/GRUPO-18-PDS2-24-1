@@ -23,14 +23,14 @@ void Partida::iniciar_jogo() {
       n_linha = 6;
       n_coluna = 7;
     }
-    Lig4 nova_partida(n_linha, n_coluna);
-    partida_lig4(nova_partida);
-
+    
     char contraIA;
     cout << "Deseja jogar contra a IA? (S/N): ";
     cin >> contraIA;
     
     _contraIA = (contraIA == 'S');
+    Lig4 nova_partida(n_linha, n_coluna);
+    partida_lig4(nova_partida);
 
   }
   else if (_t_jogo == "r") {
@@ -68,8 +68,14 @@ void Partida::partida_lig4(Lig4 nova_partida) {
     while (nova_partida.get_status() == 'i') {
       if (_contraIA && !jogador_turno) {
         coluna = ia.encontrarMelhorJogada(nova_partida);
-        cout << "IA jogou na coluna " << coluna + 1 << endl;
-        jogador_turno = (jogador_turno ? false : true);
+        if (coluna != -1) {
+          cout << "IA jogou na coluna " << coluna + 1 << endl;
+          nova_partida.jogar(coluna, "Y");
+        }
+        else {
+          cout << "IA não encontrou jogada válida" << endl;
+          break;
+        }
       }
       else {
         string jogador_atual = (jogador_turno ? this->get_apl1() : this->get_apl2());
