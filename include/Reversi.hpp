@@ -3,10 +3,12 @@
 
 #include <iostream>
 #include <vector>
+#include "Jogo.hpp"
+
 
 enum class Peca { Vazia, Preto, Branco };
 
-class Tabuleiro : public Jogo{
+class Tabuleiro : public Jogo {
 private:
     std::vector<std::vector<Peca>> grid;
 

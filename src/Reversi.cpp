@@ -1,15 +1,16 @@
 #include "../include/Reversi.hpp"
-#include "../include/Jogo.hpp"
+#include "../include/Jogo.hpp"CP
 #include <iostream>
 
 
-Tabuleiro::Tabuleiro() : grid(8, std::vector<Peca>(8, Peca::Vazia)) {
+Tabuleiro::Tabuleiro() : Jogo(8, 8), grid(8, std::vector<Peca>(8, Peca::Vazia)) {
     // Configuração inicial
     grid[3][3] = Peca::Branco;
     grid[3][4] = Peca::Preto;
     grid[4][3] = Peca::Preto;
     grid[4][4] = Peca::Branco;
 }
+
 
 Peca Tabuleiro::operator()(int linha, int coluna) const {
     return grid[linha][coluna];
