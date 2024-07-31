@@ -12,6 +12,7 @@ bool Lig4::empate() const {
             }
         }
     }
+    //comentario
     return true;
 }
 

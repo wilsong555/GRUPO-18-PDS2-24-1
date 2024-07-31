@@ -97,4 +97,5 @@ string Partida::get_apl1() const {
 
 string Partida::get_apl2() const {
   return _apl2;
+  //comentario
 }

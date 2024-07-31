@@ -16,6 +16,7 @@ string Jogo::getvalor_matriz(int linha, int coluna) const {
 };
 
 int Jogo::get_linhas() const{
+    //comentario
     return linha;
 }
 

@@ -41,6 +41,7 @@ bool Tabuleiro::temMovimentoValido(Peca jogador) const {
             }
         }
     }
+    //comentario
     return false;
 }
 

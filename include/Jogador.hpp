@@ -13,6 +13,7 @@ class Jogador {
         Jogador();
         void set_informacoes(string apelido, bool situacao, string t_jogo);
         bool mudar_estatistica_atual();
+        //comentario
     private:
         string _apelido;
         bool _status; //true é vencedor

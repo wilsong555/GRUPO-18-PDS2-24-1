@@ -28,7 +28,7 @@ void achar_valor(string linha_p_analisar, vector<int> &add_valor, bool situacao)
 
 
 Jogador::Jogador() {
-    
+    //comentario
 }
 
 void Jogador::set_informacoes(string apelido, bool situacao, string t_jogo) {

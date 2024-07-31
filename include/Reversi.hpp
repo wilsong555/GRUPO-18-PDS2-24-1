@@ -21,6 +21,7 @@ public:
 	std::pair<int, int> contarPecas() const; // Novo método
     void verificar_vencedor() override; //subst. imprimirVencedor
     //void imprimirVencedor() const; // Novo método
+    //comentario
 };
 
 #endif // REVERSI_HPP

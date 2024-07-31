@@ -17,6 +17,7 @@ class Partida {
     void partida_reversi();
     string get_apl1() const;
     string get_apl2() const;
+    //comentario
 
   private:
     string _t_jogo, _apl1, _apl2;

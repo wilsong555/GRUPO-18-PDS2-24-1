@@ -17,7 +17,7 @@
  }
 
  Cadastro::Cadastro() {
-   //inicialização de obj
+   //comentario
  }
 
  string Cadastro::adicionar_jogador(string nome, string apelido) {

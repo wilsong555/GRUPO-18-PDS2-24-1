@@ -12,6 +12,7 @@ class Jogo {
     int linha, coluna;
     vector <vector <string>> matriz;
     char _status;
+    //comentario
 
     public:
     Jogo(int linha, int coluna);
