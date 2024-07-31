@@ -1,4 +1,5 @@
 #include "../include/Partida.hpp"
+#include <limits>
 
 
 void Partida::iniciar_jogo() { 
@@ -8,7 +9,7 @@ void Partida::iniciar_jogo() {
   
   //jogo LIG4
   if (_t_jogo == "l") { 
-    cout << "\nDeseja o tabuleiro padrão(6x7)? (S/N): " << endl;
+    cout << "Deseja o tabuleiro padrão(6x7)? (S/N): " << endl;
     cin >> escolha_padrao;
     if (escolha_padrao == 'N') {
       cout << "Tamanho personalizado\nDigite o nº de linhas: ";
@@ -30,19 +31,39 @@ void Partida::iniciar_jogo() {
   }
 }
 
+int define_coluna(const string& jogador_atual) {
+    int col;
+    while (true) {
+        cout << "Turno de jogador " << jogador_atual << ". Escolha a coluna para jogar: ";
+        
+        if (cin >> col) {
+            // Verifica se a coluna está dentro do intervalo permitido (1 a 7)
+            if (col >= 1 && col <= 7) {
+                return col - 1; // Ajusta para o índice baseado em zero
+            } else {
+                cout << "Valor inválido. Digite um número entre 1 e 7.\n";
+            }
+        } else {
+            cout << "Entrada inválida. Digite um número inteiro.\n";
+            cin.clear(); // Limpa o estado de erro
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignora o restante da linha
+        }
+    }
+}
+
 void Partida::partida_lig4(Lig4 nova_partida) {
   bool jogador_turno = true; //jogador 1 e true, jogador 2 e false
-  int coluna;
   nova_partida.set_status('i');
     while (nova_partida.get_status() == 'i') {
-      cout << "Turno de jogador " << (jogador_turno ? this->get_apl1() : this->get_apl2()) << ". Escolha a coluna para jogar: "; //usei ternario para evitar gastar espaço com ifs
-      cin >> coluna;
-      if (nova_partida.jogar(--coluna, (jogador_turno ? "X" : "Y"))) { //se a jogada não for o laço se reinicia sem alterar o turno
-        nova_partida.imprime();
-        nova_partida.verificar_vencedor();
+      string jogador_atual = (jogador_turno ? this->get_apl1() : this->get_apl2());
+      int coluna = define_coluna(jogador_atual);
+      if (nova_partida.jogar(coluna, (jogador_turno ? "X" : "Y"))) { //se a jogada não for o laço se reinicia sem alterar o turno
+        nova_partida.imprime(); 
+        nova_partida.verificar_vencedor(); 
         jogador_turno = (jogador_turno ? false : true); //se o jogador atual for true então o proximo deve ser false, tendo assim a troca de turno
       }
     }
+
     if (nova_partida.get_status() == 'v') {
       cout << "O jogador " << (jogador_turno ? this->get_apl1() : this->get_apl2()) << " venceu!" << endl;
       Jogador V, P;
@@ -97,5 +118,4 @@ string Partida::get_apl1() const {
 
 string Partida::get_apl2() const {
   return _apl2;
-  //comentario
 }

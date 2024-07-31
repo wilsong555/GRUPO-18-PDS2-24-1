@@ -12,27 +12,19 @@ bool Lig4::empate() const {
             }
         }
     }
-    //comentario
     return true;
 }
 
 bool Lig4::jogar(int coluna, string valor) {
-    if(coluna >= 0 && coluna < this->get_colunas()) {
-        for (int i = this->get_linhas() - 1; i >= 0; --i) {
-          if (this->getvalor_matriz(i, coluna) == " ") {
+    for (int i = this->get_linhas() - 1; i >= 0; --i) {
+        if (this->getvalor_matriz(i, coluna) == " ") {
             this->setvalor(i, coluna, valor);
             return true;
-          }
-        }    
-    }
-    else {
-        cout << "Coluna inválida, tente outra." << endl;
-        return false;
-    }
+        }
+    }    
     cout << "Coluna cheia, tente outra." << endl;
     return false;
 }
-
 
 
 bool Lig4::verifica_direcao(int linha, int coluna, int dir_linha, int dir_coluna) {
@@ -96,5 +88,3 @@ void Lig4::imprime() const{
         cout << endl;
     }
 };
-
-
