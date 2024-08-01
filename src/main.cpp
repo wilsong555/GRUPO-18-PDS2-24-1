@@ -10,12 +10,22 @@
 
 using namespace std;
 
+void listar_opcoes_menu_inicial() {
+    cout << "--------MENU--------" << endl;
+    cout << "Escolha uma das opções: " << endl;
+    cout << "CJ - Cadastrar jogador" << endl;
+    cout << "RJ - Remover jogador" << endl;
+    cout << "LJ - Listar jogadores" << endl;
+    cout << "CP - Começar partida" << endl;
+    cout << "FS - Fechar sistema" << endl;
+}
+
 int main() {
     string escolha;
     string nome, apelido;
-    Cadastro novo_cadastro;
+    Gerenciamento_Jogadores gerenciador("estatisticas.txt");
     while (escolha != "FS") {
-        cout << "Faca a escolha" << endl;
+        listar_opcoes_menu_inicial();
         cin >> escolha;
         for (char& l : escolha) {
             l = toupper(l);
@@ -23,20 +33,15 @@ int main() {
         if (escolha == "CJ") {
             cout << "Digite o nome e o apelido: ";
             cin >> nome >> apelido;
-            cout << novo_cadastro.adicionar_jogador(nome, apelido) << endl;
+            cout << gerenciador.adicionar_jogadores(nome, apelido) << endl;
         }
         else if (escolha == "RJ") {
             cout << "Digite o apelido do jogador: ";
             cin >> apelido;
-            if(novo_cadastro.remover_jogador(apelido)) {
-                cout << "Jogador removido com sucesso" << endl;
-            }
-            else {
-                cout << "Jogador não encontrado" << endl;
-            }
+            cout << gerenciador.remover_jogador(apelido) << endl;
         }
         else if (escolha == "LJ") {
-            Cadastro::listar_jogadores();
+            //Cadastro::listar_jogadores();
         }
         else if (escolha == "CP") {
             string apl1, nome1, apl2, nome2, jogo;
@@ -54,10 +59,8 @@ int main() {
             nome1 = "Luana";
             apl2 = "opio";
             nome2 = "Marcos";
-            if (novo_cadastro.verificar_jogador(nome1, apl1) && novo_cadastro.verificar_jogador(nome2, apl2)) {
-                Partida nova_partida(jogo, apl1, apl2);
-                nova_partida.iniciar_jogo();
-            }
+            Partida nova_partida(jogo, apl1, apl2);
+            nova_partida.iniciar_jogo();
         }  
         else if (escolha == "FS") {
             return 0;

@@ -87,11 +87,11 @@ void Partida::partida_lig4(Lig4 nova_partida) {
 
     if (nova_partida.get_status() == 'v') {
         std::cout << "O jogador " << (!jogador_turno ? this->get_apl1() : this->get_apl2()) << " venceu!" << std::endl;
-        Jogador V, P;
-        V.set_informacoes((!jogador_turno ? this->get_apl1() : this->get_apl2()), true, _t_jogo);
-        V.mudar_estatistica_atual();
-        P.set_informacoes((jogador_turno ? this->get_apl1() : this->get_apl2()), false, _t_jogo);
-        P.mudar_estatistica_atual();
+        // Jogador V, P;
+        // V.set_informacoes((!jogador_turno ? this->get_apl1() : this->get_apl2()), true, _t_jogo);
+        // V.mudar_estatistica_atual();
+        // P.set_informacoes((jogador_turno ? this->get_apl1() : this->get_apl2()), false, _t_jogo);
+        // P.mudar_estatistica_atual();
     } else if (nova_partida.get_status() == 'e') {
         std::cout << "Empate! Não gera pontos." << std::endl;
     }
