@@ -1,5 +1,5 @@
 #include "../include/Partida.hpp"
-#include "../include/Ia.hpp"
+#include "../include/IA.hpp"
 #include <limits>
 
 
