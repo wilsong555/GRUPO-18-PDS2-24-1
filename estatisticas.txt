@@ -9,7 +9,7 @@ REVERSI - V: 0 D: 0
 LIG4 - V: 0 D: 0
 Lua Luana
 REVERSI- V: 0 D : 0
-LIG4 - V: 0 D : 1
+LIG4 - V: 1 D : 1
 opio Marcos
 REVERSI - V: 0 D : 0
-LIG4 - V: 2 D : 0
+LIG4 - V: 4 D : 0
