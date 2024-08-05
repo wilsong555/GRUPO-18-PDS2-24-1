@@ -1,4 +1,4 @@
-#include "../include/CadastroJogadores.hpp"
+/*#include "../include/CadastroJogadores.hpp"
 
  bool Cadastro::verificaStrings(const string &apelido) {
    fstream arquivo_base("estatisticas.txt", ios::in);
@@ -141,4 +141,4 @@ void Cadastro::listar_jogadores() {
        }
    }
    cout << "-----------------------------" << endl;
- }
+ }*/

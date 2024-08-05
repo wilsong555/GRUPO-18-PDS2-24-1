@@ -1,4 +1,4 @@
-#ifndef IA_HPP
+/*#ifndef IA_HPP
 #define IA_HPP
 
 #include "Lig4.hpp"
@@ -16,4 +16,4 @@ public:
     int minimax(Lig4& jogo, int profundidade, bool isMaximizingPlayer);
 };
 
-#endif
+#endif*/

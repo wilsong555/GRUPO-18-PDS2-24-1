@@ -1,4 +1,4 @@
-#include "../include/Partida.hpp"
+/*#include "../include/Partida.hpp"
 #include "../include/Ia.hpp"
 #include <limits>
 
@@ -138,4 +138,4 @@ string Partida::get_apl1() const {
 
 string Partida::get_apl2() const {
   return _apl2;
-}
+}*/
