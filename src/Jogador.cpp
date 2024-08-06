@@ -23,9 +23,8 @@ void achar_valor(string linha_p_analisar, vector<int> &add_valor, bool situacao)
         }
     }
     add_valor[0] = (situacao == true ? add_valor[0] : add_valor[0] - 1);
-    add_valor[1] = (situacao == true ? add_valor[1] - 1 : add_valor[1] - 1);
+    add_valor[1] = (situacao == true ? add_valor[1] - 1 : add_valor[1]);
 }
-
 
 Jogador::Jogador() {
     //comentario
@@ -44,6 +43,7 @@ bool Jogador::mudar_estatistica_atual() {
         cout << "Erro ao abrir arquivo" << endl;
         return false;
     }
+
     string linha_texto, procura_apelido, procura_num;
     while(getline(arquivo_base, linha_texto)) {
         stringstream leitura(linha_texto);
@@ -52,14 +52,16 @@ bool Jogador::mudar_estatistica_atual() {
             arquivo_temporario << linha_texto << endl;
         }
         else {
+            cout << "O apelido atual é: " << this->_apelido << endl;
             vector<int> vetor_valores;
             arquivo_temporario << linha_texto << endl; //coloca a linha de info_nome
-            if (this->_jogo_atual == "r") {
+            if (this->_jogo_atual == "R") {
                 achar_valor(linha_texto, vetor_valores, this->_status);
                 arquivo_temporario << "REVERSI - V : " << vetor_valores[0] << " D : " << vetor_valores[1] << endl;
                 getline(arquivo_base, linha_texto);
                 arquivo_temporario << linha_texto << endl;
-            } else if(this->_jogo_atual == "l") {
+            } else if(this->_jogo_atual == "L") {
+                cout << "Acessei a mudança de dados de lig4 do jogador: " << this->_apelido << endl;
                 getline(arquivo_base, linha_texto);
                 arquivo_temporario << linha_texto << endl;
                 getline(arquivo_base, linha_texto);

@@ -52,21 +52,35 @@ int main() {
             for (char& l : jogo) {
             l = toupper(l);
             }
+
+            char contraIA;
+            cout << "Deseja jogar contra a IA? (S/N): ";
+            cin >> contraIA;
+            contraIA = toupper(contraIA);
+
+
             cout << "Digite o nick e o nome do jogador 1: ";
             cin >> apl1 >> nome1;
             if (!Jogador::verificar_jogador(nome1, apl1, mensagem_retorno)) {
                 erro_atribuicao = true;
                 cout << mensagem_retorno << endl;
             }
-            cout << "Digite o nick e nome do jogador 2: ";
-            cin >> apl2 >> nome2;
-            if (!Jogador::verificar_jogador(nome2, apl2, mensagem_retorno)) {
-                erro_atribuicao = true;
-                cout << mensagem_retorno << endl;
+            if (contraIA == 'N') {
+                cout << "Digite o nick e nome do jogador 2: ";
+                cin >> apl2 >> nome2;
+                if (!Jogador::verificar_jogador(nome2, apl2, mensagem_retorno)) {
+                    erro_atribuicao = true;
+                    cout << mensagem_retorno << endl;
+                }
             }
+            else {
+                apl2 = "IA";
+            }
+            
             if (erro_atribuicao == false) {
-            Partida nova_partida(jogo, apl1, apl2);
+            Partida nova_partida(jogo, apl1, apl2, contraIA);
             nova_partida.iniciar_jogo();
+
             } else { cout << "Erro. Tente novamente" << endl; }
         }  
         else if (escolha == "FS") {

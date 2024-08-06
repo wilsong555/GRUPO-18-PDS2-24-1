@@ -1,15 +1,15 @@
 nba Jonas
 REVERSI - V: 0 D: 0
-LIG4 - V: 0 D: 0
+LIG4 - V: 2 D : 1
 bibi_perigosa bianca
 REVERSI - V: 0 D: 0
-LIG4 - V: 0 D: 0
+LIG4 - V: 1 D : 0
 jujuba ana
 REVERSI - V: 0 D: 0
-LIG4 - V: 0 D: 0
+LIG4 - V: 1 D : 3
 Lua Luana
 REVERSI- V: 0 D : 0
 LIG4 - V: 0 D : 0
 opio Marcos
 REVERSI - V: 0 D : 0
-LIG4 - V: 0 D : 0
+LIG4 - V: 0 D : 1
