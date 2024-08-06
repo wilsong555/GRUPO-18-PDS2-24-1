@@ -12,17 +12,18 @@ using namespace std;
 
 void listar_opcoes_menu_inicial() {
     cout << "--------MENU--------" << endl;
-    cout << "Escolha uma das opções: " << endl;
     cout << "CJ - Cadastrar jogador" << endl;
     cout << "RJ - Remover jogador" << endl;
     cout << "LJ - Listar jogadores" << endl;
     cout << "CP - Começar partida" << endl;
     cout << "FS - Fechar sistema" << endl;
+    cout << "Escolha uma das opções: ";
 }
 
 int main() {
     string escolha;
     string nome, apelido;
+    string mensagem_retorno;
     Gerenciamento_Jogadores gerenciador("estatisticas.txt");
     while (escolha != "FS") {
         listar_opcoes_menu_inicial();
@@ -45,22 +46,28 @@ int main() {
         }
         else if (escolha == "CP") {
             string apl1, nome1, apl2, nome2, jogo;
-            
+            bool erro_atribuicao = false;
             cout << "Digite L para Lig4 ou R para Reversi: ";
             cin >> jogo;
-            for (char& l : escolha) {
+            for (char& l : jogo) {
             l = toupper(l);
             }
-            // cout << "Digite o nick e o nome do jogador 1: " << endl;
-            // cin >> apl1 >> nome1;
-            // cout << "Digite o nick e nome do jogador 2: " << endl;
-            // cin >> apl2 >> nome2;
-            apl1 = "Lua";
-            nome1 = "Luana";
-            apl2 = "opio";
-            nome2 = "Marcos";
+            cout << "Digite o nick e o nome do jogador 1: ";
+            cin >> apl1 >> nome1;
+            if (!Jogador::verificar_jogador(nome1, apl1, mensagem_retorno)) {
+                erro_atribuicao = true;
+                cout << mensagem_retorno << endl;
+            }
+            cout << "Digite o nick e nome do jogador 2: ";
+            cin >> apl2 >> nome2;
+            if (!Jogador::verificar_jogador(nome2, apl2, mensagem_retorno)) {
+                erro_atribuicao = true;
+                cout << mensagem_retorno << endl;
+            }
+            if (erro_atribuicao == false) {
             Partida nova_partida(jogo, apl1, apl2);
             nova_partida.iniciar_jogo();
+            } else { cout << "Erro. Tente novamente" << endl; }
         }  
         else if (escolha == "FS") {
             return 0;

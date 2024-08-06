@@ -9,7 +9,7 @@ void Partida::iniciar_jogo() {
   int n_linha, n_coluna;
   
   //jogo LIG4
-  if (_t_jogo == "l") { 
+  if (_t_jogo == "L") { 
     cout << "Deseja o tabuleiro padrão(6x7)? (S/N): " << endl;
     cin >> escolha_padrao;
     escolha_padrao = toupper(escolha_padrao);

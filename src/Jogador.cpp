@@ -74,3 +74,28 @@ bool Jogador::mudar_estatistica_atual() {
     rename("estat_temp.txt", "estatisticas.txt");
     return true;
 }
+
+bool Jogador::verificar_jogador(const string &nome, const string &apelido, string &mensagem) {
+    fstream _arquivo("estatisticas.txt", ios::in);
+    if (_arquivo.is_open()) {
+        string linhas_texto, procura_apl, procura_nom;
+        while (getline(_arquivo, linhas_texto)) {
+            stringstream leitura(linhas_texto);
+            leitura >> procura_apl >> procura_nom;
+            if (procura_apl == apelido && procura_nom == nome) {
+                mensagem = "Dados corretos - " + apelido + " pronto para jogar";
+                return true; // jogador já existe
+            }
+            else if (procura_apl == apelido && procura_nom != nome) {
+                mensagem = "Dados incorretos - nome incorreto";
+                return false; // alguma informação incorreta
+            }
+            else if (procura_nom == nome && procura_apl != apelido) {
+                mensagem = "Dados incorretos - apelido incorreto";
+                return false;
+            }
+        }
+    }
+   mensagem = "O jogador " + nome + " - " + apelido + " não foi encontrado";
+   return false;
+}
