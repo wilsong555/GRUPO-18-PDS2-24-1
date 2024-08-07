@@ -7,6 +7,9 @@ LIG4 - V: 0 D : 0
 opio Marcos
 REVERSI - V: 0 D : 0
 LIG4 - V: 0 D : 1
+lia Natalia
+REVERSI - V: 0 D: 0
+LIG4 - V: 0 D: 0
 jujuba ana
 REVERSI - V: 0 D: 0
 LIG4 - V: 0 D: 0

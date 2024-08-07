@@ -25,6 +25,7 @@ int main() {
     string nome, apelido;
     string mensagem_retorno;
     Gerenciamento_Jogadores gerenciador("estatisticas.txt");
+    
     while (escolha != "FS") {
         listar_opcoes_menu_inicial();
         cin >> escolha;
@@ -42,7 +43,7 @@ int main() {
             cout << gerenciador.remover_jogador(apelido) << endl;
         }
         else if (escolha == "LJ") {
-            //Cadastro::listar_jogadores();
+            gerenciador.listar_jogadores();
         }
         else if (escolha == "CP") {
             string apl1, nome1, apl2, nome2, jogo;
