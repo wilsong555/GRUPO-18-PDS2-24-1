@@ -1,4 +1,5 @@
 #include "../include/CadastroJogadores.hpp"
+#include <cstdio> 
 
 Gerenciamento_Jogadores::Gerenciamento_Jogadores(const string &nome_arquivo) {
   _nome_arquivo = nome_arquivo;
@@ -36,36 +37,41 @@ string Gerenciamento_Jogadores::adicionar_jogadores(string nome, string apelido)
 
 string Gerenciamento_Jogadores::remover_jogador(const std::string &apelido) {
     bool apl_encontrado = false;
-    fstream arquivo_temporario("arq_temp.txt", std::ios::out);
+    
+    fstream arquivo_temporario("arq_temp.txt", ios::out);
     if (!_arquivo.is_open() || !arquivo_temporario.is_open()) { 
         return "Erro na abertura do arquivo";
     }
-    
+
     string leitura_linha, procura_apl;
     while (getline(_arquivo, leitura_linha)) {
         stringstream leitura_frase(leitura_linha);
         leitura_frase >> procura_apl;
         if (procura_apl != apelido) {
-            arquivo_temporario << leitura_linha << endl;
+            arquivo_temporario << leitura_linha << std::endl;
         } else {
             apl_encontrado = true;
             getline(_arquivo, leitura_linha); // ignora reversi
             getline(_arquivo, leitura_linha); // ignora lig4
         }
     }
+
     _arquivo.close();
     arquivo_temporario.close();
 
     if (apl_encontrado) {
-        remove(_nome_arquivo.c_str());
-        rename("arq_temp.txt", _nome_arquivo.c_str());
+        // Remover o arquivo original e renomear o temporário
+        if (remove(_nome_arquivo.c_str()) != 0 || rename("arq_temp.txt", _nome_arquivo.c_str()) != 0) {
+            return "Erro ao atualizar o arquivo original.";
+        }
+        // Reabrir o arquivo original
         _arquivo.open(_nome_arquivo, ios::in | ios::out | ios::app);
         if (!_arquivo.is_open()) { 
             return "Erro ao reabrir o arquivo original.";
         }
         return "O jogador " + apelido + " foi removido";
-
     } else {
+        // Arquivo temporário foi criado mas não precisamos mais dele
         remove("arq_temp.txt");
         _arquivo.open(_nome_arquivo, ios::in | ios::out | ios::app);
         if (!_arquivo.is_open()) { 
@@ -74,6 +80,49 @@ string Gerenciamento_Jogadores::remover_jogador(const std::string &apelido) {
         return "O jogador não existe";
     }
 }
+
+
+
+// string Gerenciamento_Jogadores::remover_jogador(const std::string &apelido) {
+//     bool apl_encontrado = false;
+//     fstream arquivo_temporario("arq_temp.txt", std::ios::out);
+//     if (!_arquivo.is_open() || !arquivo_temporario.is_open()) { 
+//         return "Erro na abertura do arquivo";
+//     }
+    
+//     string leitura_linha, procura_apl;
+//     while (getline(_arquivo, leitura_linha)) {
+//         stringstream leitura_frase(leitura_linha);
+//         leitura_frase >> procura_apl;
+//         if (procura_apl != apelido) {
+//             arquivo_temporario << leitura_linha << endl;
+//         } else {
+//             apl_encontrado = true;
+//             getline(_arquivo, leitura_linha); // ignora reversi
+//             getline(_arquivo, leitura_linha); // ignora lig4
+//         }
+//     }
+//     _arquivo.close();
+//     arquivo_temporario.close();
+
+//     if (apl_encontrado) {
+//         remove(_nome_arquivo.c_str());
+//         rename("arq_temp.txt", _nome_arquivo.c_str());
+//         _arquivo.open(_nome_arquivo, ios::in | ios::out | ios::app);
+//         if (!_arquivo.is_open()) { 
+//             return "Erro ao reabrir o arquivo original.";
+//         }
+//         return "O jogador " + apelido + " foi removido";
+
+//     } else {
+//         remove("arq_temp.txt");
+//         _arquivo.open(_nome_arquivo, ios::in | ios::out | ios::app);
+//         if (!_arquivo.is_open()) { 
+//             return "Erro ao reabrir o arquivo original.";
+//         }
+//         return "O jogador não existe";
+//     }
+// }
 
 
 //  vector<Pessoa> LerArquivo (const string Arq_estatisticas) {
