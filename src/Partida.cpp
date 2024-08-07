@@ -9,7 +9,7 @@ void Partida::iniciar_jogo() {
   int n_linha, n_coluna;
   
   //jogo LIG4
-    if (_t_jogo == "L") { 
+    if (_t_jogo == 'L') { 
         //verificação do tamanho do tabuleiro  
         cout << "Deseja o tabuleiro padrão(6x7)? (S/N): ";
         cin >> escolha_padrao;
@@ -34,7 +34,9 @@ void Partida::iniciar_jogo() {
             partida_lig4(nova_partida);
         }
     }
-  else if (_t_jogo == "R") {
+  else if (_t_jogo == 'R') {
+    //precisa definir se vai ter tabuleiro personalizado aqui
+    //precisa definir como funciona a função com ia aqui (caso use a mesma função para ambos os casos desconsiderar)
     partida_reversi();
   }
 }
@@ -127,6 +129,8 @@ void Partida::partida_lig4(Lig4 nova_partida) {
         cout << "Empate! Não gera pontos." << std::endl;
     }
 }
+
+/*vou tentar conectar as funções de mudancas de estatisticas aqui, caso queira colocar de outra forma pode ficar a vontade*/
 
 void Partida::partida_reversi() {
     cout << "iniciou partida" << endl;

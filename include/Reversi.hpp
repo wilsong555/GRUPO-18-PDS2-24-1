@@ -11,6 +11,7 @@ enum class Peca { Vazia, Preto, Branco };
 class Tabuleiro : public Jogo {
 private:
     std::vector<std::vector<Peca>> grid;
+    
 
 public:
     Tabuleiro();
@@ -22,8 +23,7 @@ public:
     void aplicarMovimento(int linha, int coluna, Peca jogador);
 	std::pair<int, int> contarPecas() const; // Novo método
     void verificar_vencedor() override; //subst. imprimirVencedor
-    //void imprimirVencedor() const; // Novo método
-    //comentario
+    
 };
 
 #endif // REVERSI_HPP

@@ -46,14 +46,27 @@ int main() {
             gerenciador.listar_jogadores();
         }
         else if (escolha == "CP") {
-            string apl1, nome1, apl2, nome2, jogo;
+            string apl1, nome1, apl2, nome2;
+            char jogo;
             bool erro_atribuicao = false;
-            cout << "Digite L para Lig4 ou R para Reversi: ";
-            cin >> jogo;
-            for (char& l : jogo) {
-            l = toupper(l);
+            while (true) {
+                cout << "Digite L para Lig4 ou R para Reversi: ";
+                cin >> jogo;
+                // Verifica se a entrada é válida
+                if (cin.fail()) {
+                    cin.clear(); // Limpa o estado de erro
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Descarta a entrada inválida
+                    cout << "Entrada inválida. Digite uma letra." << endl;
+                } else {
+                    jogo = toupper(jogo); // Converte a entrada para maiúscula
+                    if (jogo == 'L' || jogo == 'R') {
+                        break; // Sai do loop se a entrada for válida
+                    } else {
+                        cout << "Alternativa inválida. Tente novamente" << endl;
+                    }
+                }
             }
-
+            
             char contraIA;
             cout << "Deseja jogar contra a IA? (S/N): ";
             cin >> contraIA;

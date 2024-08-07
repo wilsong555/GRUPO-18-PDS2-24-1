@@ -11,13 +11,13 @@ using namespace std;
 class Jogador {
     public:
         Jogador();
-        void set_informacoes(string apelido, bool situacao, string t_jogo);
+        void set_informacoes(string apelido, bool situacao, char t_jogo);
         bool mudar_estatistica_atual();
         static bool verificar_jogador(const string &nome, const string &apelido, string &mensagem);
     private:
         string _apelido;
         bool _status; //true é vencedor
-        string _jogo_atual;
+        char _jogo_atual;
 };
 
 #endif

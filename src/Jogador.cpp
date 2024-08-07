@@ -29,7 +29,7 @@ void achar_valor(string linha_p_analisar, vector<int> &add_valor, bool situacao)
 Jogador::Jogador() {
 }
 
-void Jogador::set_informacoes(string apelido, bool situacao, string t_jogo) {
+void Jogador::set_informacoes(string apelido, bool situacao, char t_jogo) {
     this->_apelido = apelido;
     this->_status = situacao;
     this->_jogo_atual = t_jogo;
@@ -53,12 +53,12 @@ bool Jogador::mudar_estatistica_atual() {
         else {
             vector<int> vetor_valores;
             arquivo_temporario << linha_texto << endl; //coloca a linha de info_nome
-            if (this->_jogo_atual == "R") {
+            if (this->_jogo_atual == 'R') {
                 achar_valor(linha_texto, vetor_valores, this->_status);
                 arquivo_temporario << "REVERSI - V : " << vetor_valores[0] << " D : " << vetor_valores[1] << endl;
                 getline(arquivo_base, linha_texto);
                 arquivo_temporario << linha_texto << endl;
-            } else if(this->_jogo_atual == "L") {
+            } else if(this->_jogo_atual == 'L') {
                 getline(arquivo_base, linha_texto);
                 arquivo_temporario << linha_texto << endl;
                 getline(arquivo_base, linha_texto);
