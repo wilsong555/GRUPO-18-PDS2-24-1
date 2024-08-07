@@ -8,6 +8,8 @@
 #include "Lig4.hpp"
 #include "Reversi.hpp"
 #include "IA.hpp"
+#include <limits>
+#include <stdexcept>
 
 using namespace std;
 
@@ -23,8 +25,8 @@ class Partida {
 
   private:
     string _t_jogo, _apl1, _apl2;
-    bool get_ia();
     char _contraIA;
+    int tratamento_coluna(int max);
 };
 
 #endif

@@ -27,7 +27,6 @@ void achar_valor(string linha_p_analisar, vector<int> &add_valor, bool situacao)
 }
 
 Jogador::Jogador() {
-    //comentario
 }
 
 void Jogador::set_informacoes(string apelido, bool situacao, string t_jogo) {
@@ -52,7 +51,6 @@ bool Jogador::mudar_estatistica_atual() {
             arquivo_temporario << linha_texto << endl;
         }
         else {
-            cout << "O apelido atual é: " << this->_apelido << endl;
             vector<int> vetor_valores;
             arquivo_temporario << linha_texto << endl; //coloca a linha de info_nome
             if (this->_jogo_atual == "R") {
@@ -61,7 +59,6 @@ bool Jogador::mudar_estatistica_atual() {
                 getline(arquivo_base, linha_texto);
                 arquivo_temporario << linha_texto << endl;
             } else if(this->_jogo_atual == "L") {
-                cout << "Acessei a mudança de dados de lig4 do jogador: " << this->_apelido << endl;
                 getline(arquivo_base, linha_texto);
                 arquivo_temporario << linha_texto << endl;
                 getline(arquivo_base, linha_texto);

@@ -3,13 +3,6 @@
 #include <limits>
 
 
-bool Partida::get_ia() {
-    if (_contraIA == 'S') {
-        return true;
-    }
-    return false;
-}
-
 void Partida::iniciar_jogo() { 
   //inicialização de variaveis gerais
   char escolha_padrao;
@@ -34,37 +27,16 @@ void Partida::iniciar_jogo() {
         }
 
         Lig4 nova_partida(n_linha, n_coluna);
-        if (this->get_ia()) {
-            cout << "ntrou em partida ia" << endl;
+        if (this->_contraIA == 'S') {
             partida_lig4_IA(nova_partida);
         }
         else {
             partida_lig4(nova_partida);
         }
     }
-  else if (_t_jogo == "r") {
+  else if (_t_jogo == "R") {
     partida_reversi();
   }
-}
-
-int define_coluna(const string& jogador_atual) {
-    int col;
-    while (true) {
-        cout << "Turno de jogador " << jogador_atual << ". Escolha a coluna para jogar: ";
-        
-        if (cin >> col) {
-            // Verifica se a coluna está dentro do intervalo permitido (1 a 7)
-            if (col >= 1 && col <= 7) {
-                return col - 1; // Ajusta para o índice baseado em zero
-            } else {
-                cout << "Valor inválido. Digite um número entre 1 e 7.\n";
-            }
-        } else {
-            cout << "Entrada inválida. Digite um número inteiro.\n";
-            cin.clear(); // Limpa o estado de erro
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignora o restante da linha
-        }
-    }
 }
 
 void Partida::partida_lig4_IA(Lig4 nova_partida) {
@@ -76,9 +48,14 @@ void Partida::partida_lig4_IA(Lig4 nova_partida) {
 
     while(nova_partida.get_status() == 'i') {
         if (jogador_turno) {
-            cout << "Turno de jogador " << this->get_apl1() << ". Escolha a coluna para jogar: ";
-            cin >> coluna;
-            //trata excessoes
+            try {
+                cout << "Turno de jogador " << this->get_apl1() << ". Escolha a coluna para jogar. ";
+                coluna = tratamento_coluna(7);
+            } catch (const runtime_error& e) {
+                cout << "Erro: " << e.what() << endl;
+            } catch (...) {
+                cout << "Erro desconhecido." << endl;
+            }
             coluna--;
         }
         else {
@@ -114,7 +91,6 @@ void Partida::partida_lig4_IA(Lig4 nova_partida) {
     }
 }
 
-
 void Partida::partida_lig4(Lig4 nova_partida) {
     bool jogador_turno = true; // Jogador 1 é true, jogador 2 é false
     int coluna;
@@ -122,9 +98,15 @@ void Partida::partida_lig4(Lig4 nova_partida) {
 
     
     while (nova_partida.get_status() == 'i') {
-        cout << "Turno de jogador " << (jogador_turno ? this->get_apl1() : this->get_apl2()) << ". Escolha a coluna para jogar: ";
-        cin >> coluna;
-        coluna--;
+            try {
+                cout << "Turno de jogador " << this->get_apl1() << ". Escolha a coluna para jogar. ";
+                coluna = tratamento_coluna(7);
+            } catch (const runtime_error& e) {
+                cout << "Erro: " << e.what() << endl;
+            } catch (...) {
+                cout << "Erro desconhecido." << endl;
+            }
+            coluna--;
 
         if (nova_partida.jogar(coluna, (jogador_turno ? "X" : "Y"))) {
             nova_partida.imprime();
@@ -180,11 +162,31 @@ void Partida::partida_reversi() {
     tabuleiro.verificar_vencedor();
 }
 
-
 string Partida::get_apl1() const {
   return _apl1;
 }
 
 string Partida::get_apl2() const {
   return _apl2;
+}
+
+int Partida::tratamento_coluna(int max) {
+    int valor;
+    while (true) {
+        cout << "Digite um valor de 1 a " << max << " : ";
+        cin >> valor;
+
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Entrada inválida. Digite um valor inteiro." << endl;
+        }
+        else if (valor < 1 || valor > max) {
+            cout << "Número fora do intervalo permitido. Tente novamente." << endl;
+        }
+        else {
+            break;
+        }
+    }
+    return valor;
 }
