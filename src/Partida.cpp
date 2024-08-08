@@ -6,19 +6,30 @@ void Partida::iniciar_jogo() {
   //inicialização de variaveis gerais
   char escolha_padrao;
   int n_linha, n_coluna;
-  
+
   //jogo LIG4
     if (_t_jogo == 'L') { 
-        //verificação do tamanho do tabuleiro  
-        cout << "Deseja o tabuleiro padrão(6x7)? (S/N): ";
-        cin >> escolha_padrao;
-        escolha_padrao = toupper(escolha_padrao);
+
+        while (true) {
+            cout << "Deseja o tabuleiro padrão(6x7)? (S/N): ";
+            cin >> escolha_padrao;
+            escolha_padrao = toupper(escolha_padrao);
+            if (!isalpha(escolha_padrao)) {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "Caractere inválido. Tente novamente" << endl;
+            } else if (escolha_padrao != 'S' && escolha_padrao != 'N') {
+                cout << "Opção inválida. Tente novamente" << endl;
+            } else {
+                break;
+            }
+        }
 
         if (escolha_padrao == 'N') {
-            cout << "Digite o nº de linhas: ";
-            cin >> n_linha;
-            cout << "Digite o nº de colunas: ";
-            cin >> n_coluna;
+            cout << "Nº de linhas - ";
+            n_linha = tratamento_num(4, 20);
+            cout << "Nº de colunas - ";
+            n_coluna = tratamento_num(4, 20);
             cout << endl;
         } else {
             n_linha = 6;
@@ -51,7 +62,7 @@ void Partida::partida_lig4_IA(Lig4 nova_partida) {
         if (jogador_turno) {
             try {
                 cout << "Turno de jogador " << this->get_apl1() << ". Escolha a coluna para jogar. ";
-                coluna = tratamento_coluna(7);
+                coluna = tratamento_num(1 ,nova_partida.get_colunas());
             } catch (const runtime_error& e) {
                 cout << "Erro: " << e.what() << endl;
             } catch (...) {
@@ -101,7 +112,7 @@ void Partida::partida_lig4(Lig4 nova_partida) {
     while (nova_partida.get_status() == 'i') {
             try {
                 cout << "Turno de jogador " << this->get_apl1() << ". Escolha a coluna para jogar. ";
-                coluna = tratamento_coluna(7);
+                coluna = tratamento_num(1, nova_partida.get_colunas());
             } catch (const runtime_error& e) {
                 cout << "Erro: " << e.what() << endl;
             } catch (...) {
@@ -173,10 +184,10 @@ string Partida::get_apl2() const {
   return _apl2;
 }
 
-int Partida::tratamento_coluna(int max) {
+int Partida::tratamento_num(int min, int max) {
     int valor;
     while (true) {
-        cout << "Digite um valor de 1 a " << max << " : ";
+        cout << "Digite um valor de " << min << " a " << max << " : ";
         cin >> valor;
 
         if (cin.fail()) {
@@ -184,7 +195,7 @@ int Partida::tratamento_coluna(int max) {
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "Entrada inválida. Digite um valor inteiro." << endl;
         }
-        else if (valor < 1 || valor > max) {
+        else if (valor < min || valor > max) {
             cout << "Número fora do intervalo permitido. Tente novamente." << endl;
         }
         else {

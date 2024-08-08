@@ -27,7 +27,7 @@ class Partida {
     char _t_jogo;
     string _apl1, _apl2;
     char _contraIA;
-    int tratamento_coluna(int max);
+    int tratamento_num(int min, int max);
 };
 
 #endif
