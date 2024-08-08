@@ -10,78 +10,92 @@
 
 using namespace std;
 
-void listar_opcoes_menu_inicial() {
-    cout << "--------MENU--------" << endl;
-    cout << "CJ - Cadastrar jogador" << endl;
-    cout << "RJ - Remover jogador" << endl;
-    cout << "LJ - Listar jogadores" << endl;
-    cout << "CP - Começar partida" << endl;
-    cout << "FS - Fechar sistema" << endl;
-    cout << "Escolha uma das opções: ";
+int listar_opcoes_menu_inicial() {
+    int escolha;
+    while(true) {
+        cout << "--------MENU--------" << endl;
+        cout << "(1) - Cadastrar jogador" << endl;
+        cout << "(2) - Remover jogador" << endl;
+        cout << "(3) - Listar jogadores" << endl;
+        cout << "(4) - Começar partida" << endl;
+        cout << "(5) - Fechar sistema" << endl;
+        cout << "Escolha uma das opções: ";
+        cin >> escolha;
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "\nEntrada inválida." << endl;
+        } else if (escolha < 1 || escolha > 5) {
+            cout << "\nValor inválido. Digite um número de 1 a 5 de acordo com as opções." << endl;
+        } else {
+            break;
+        }
+    }
+    return escolha;
+}
+
+char atribuir_char(string mensagem_cout, char opc1, char opc2) {
+    char escolha_atribuida;
+    while (true) {
+        cout << mensagem_cout;
+        cin >> escolha_atribuida;
+        escolha_atribuida = toupper(escolha_atribuida);
+        if (!isalpha(escolha_atribuida)) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Caractere inválido. Tente novamente" << endl;
+        } else if (escolha_atribuida != opc1 && escolha_atribuida != opc2) {
+            cout << "Opção inválida. Tente novamente" << endl;
+        } else {
+            break;
+        }
+    }
+    return escolha_atribuida;
 }
 
 int main() {
-    string escolha;
+    int escolha;
     string nome, apelido;
     string mensagem_retorno;
     Gerenciamento_Jogadores gerenciador("estatisticas.txt");
     
-    while (escolha != "FS") {
-        listar_opcoes_menu_inicial();
-        cin >> escolha;
-        for (char& l : escolha) {
-            l = toupper(l);
-        }
-        if (escolha == "CJ") {
-            cout << "Digite o nome e o apelido: ";
+    while (true) {
+        escolha = listar_opcoes_menu_inicial();
+        if (escolha == 1) {
+            cout << "Digite o nome e o apelido do novo jogador: ";
             cin >> nome >> apelido;
             cout << gerenciador.adicionar_jogadores(nome, apelido) << endl;
         }
-        else if (escolha == "RJ") {
+        else if (escolha == 2) {
             cout << "Digite o apelido do jogador: ";
             cin >> apelido;
             cout << gerenciador.remover_jogador(apelido) << endl;
         }
-        else if (escolha == "LJ") {
+        else if (escolha == 3) {
             gerenciador.listar_jogadores();
         }
-        else if (escolha == "CP") {
-            string apl1, nome1, apl2, nome2;
-            char jogo;
+        else if (escolha == 4) {
+            string apl1, nome1, apl2, nome2, mensagem;
+            char jogo, contraIA;
             bool erro_atribuicao = false;
-            while (true) {
-                cout << "Digite L para Lig4 ou R para Reversi: ";
-                cin >> jogo;
-                // Verifica se a entrada é válida
-                if (cin.fail()) {
-                    cin.clear(); // Limpa o estado de erro
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Descarta a entrada inválida
-                    cout << "Entrada inválida. Digite uma letra." << endl;
-                } else {
-                    jogo = toupper(jogo); // Converte a entrada para maiúscula
-                    if (jogo == 'L' || jogo == 'R') {
-                        break; // Sai do loop se a entrada for válida
-                    } else {
-                        cout << "Alternativa inválida. Tente novamente" << endl;
-                    }
-                }
-            }
+
+            mensagem = "Digite L para Lig4 ou R para Reversi: ";
+            jogo = atribuir_char(mensagem, 'R', 'L');
             
-            char contraIA;
-            cout << "Deseja jogar contra a IA? (S/N): ";
-            cin >> contraIA;
-            contraIA = toupper(contraIA);
+            mensagem = "Deseja jogar contra a IA? (S/N): ";
+            contraIA = atribuir_char(mensagem, 'S', 'N');
 
-
-            cout << "Digite o nick e o nome do jogador 1: ";
-            cin >> apl1 >> nome1;
+            cout << "--------Informações do jogador 1---------" << endl;
+            cout << "Digite o nome e o apelido: ";
+            cin >> nome1 >> apl1;
             if (!Jogador::verificar_jogador(nome1, apl1, mensagem_retorno)) {
                 erro_atribuicao = true;
                 cout << mensagem_retorno << endl;
             }
             if (contraIA == 'N') {
-                cout << "Digite o nick e nome do jogador 2: ";
-                cin >> apl2 >> nome2;
+                cout << "--------Informações do jogador 2---------" << endl;
+                cout << "Digite o nome e o apelido: ";
+                cin >> nome2 >> apl2;
                 if (!Jogador::verificar_jogador(nome2, apl2, mensagem_retorno)) {
                     erro_atribuicao = true;
                     cout << mensagem_retorno << endl;
@@ -97,7 +111,7 @@ int main() {
 
             } else { cout << "Erro. Tente novamente" << endl; }
         }  
-        else if (escolha == "FS") {
+        else if (escolha == 5) {
             return 0;
         }
     }

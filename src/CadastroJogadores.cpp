@@ -1,6 +1,5 @@
 #include "../include/CadastroJogadores.hpp"
 
-
 // ------------------------------ Informações pessoais -------------------------
 
 vector<Informacoes_pessoais> LerArquivo(const string &nome_arquivo) { 

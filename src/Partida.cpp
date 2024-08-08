@@ -2,7 +2,6 @@
 #include "../include/IA.hpp"
 #include <limits>
 
-
 void Partida::iniciar_jogo() { 
   //inicialização de variaveis gerais
   char escolha_padrao;
