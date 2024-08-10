@@ -1,4 +1,4 @@
-/*#ifndef JOGADOR_HPP
+#ifndef JOGADOR_HPP
 #define JOGADOR_HPP
 #include <iostream>
 #include <string>
@@ -8,7 +8,7 @@
 using namespace std;
 
 
-class Jogador {
+/*class Jogador {
     public:
         Jogador();
         void set_informacoes(string apelido, bool situacao, string t_jogo);
@@ -18,6 +18,16 @@ class Jogador {
         string _apelido;
         bool _status; //true é vencedor
         string _jogo_atual;
+};*/
+class Jogador {
+public:
+    string apelido;
+    string nome;
+    int vitorias;
+    int derrotas;
+
+    Jogador(const string& apelido, const string& nome)
+        : apelido(apelido), nome(nome), vitorias(0), derrotas(0) {}
 };
 
-#endif*/
+#endif

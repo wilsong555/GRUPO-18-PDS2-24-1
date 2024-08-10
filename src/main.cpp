@@ -6,13 +6,14 @@
 #include <stdexcept>
 #include <limits>
 #include "../include/CadastroJogadores.hpp"
+#include "../include/Jogador.hpp"
 #include "../include/Partida.hpp"
 #include "../include/Jogo.hpp"
 
 
 using namespace std;
 
-void jogarReversi() {
+/*void jogarReversi() {
     Tabuleiro tabuleiro;
     Peca jogadorAtual = Peca::Preto;
 
@@ -107,15 +108,25 @@ int main() {
     }
 
     return 0;
+}*/
+void showMenu() {
+    cout << endl <<"  Comandos disponiveis:" << endl;
+    cout << "  ----------------------"<< endl;
+    cout << " 'CJ' <Apelido> <Nome> - Cadastrar Jogador" <<endl;
+    cout << " 'RJ' <Apelido> - Remover Jogador" << endl;
+    cout << " 'LJ' [A|N] - Listar Jogadores (A: Ordenar por Apelido, N: Ordenar por Nome)" << endl;
+    cout << " 'EP' <Jogo: (R|L)> <Apelido Jogador 1> <Apelido Jogador 2> - Executar Partida" << endl;
+    cout << " 'FS' - Finalizar Sistema" << endl;
 }
 
 
-/*int main() {
+int main() {
+    showMenu();
     string escolha;
     string nome, apelido;
     Cadastro novo_cadastro;
     while (escolha != "FS") {
-        cout << "Faca a escolha" << endl;
+        cout << endl << "Faca a escolha:" << endl;
         cin >> escolha;
         for (char& l : escolha) {
             l = toupper(l);
@@ -126,10 +137,11 @@ int main() {
             cout << novo_cadastro.adicionar_jogador(nome, apelido) << endl;
         }
         else if (escolha == "RJ") {
+         
             cout << "Digite o apelido do jogador: ";
             cin >> apelido;
             if(novo_cadastro.remover_jogador(apelido)) {
-                cout << "Jogador removido com sucesso" << endl;
+                cout << "Jogador removido com sucesso!!!" << endl;
             }
             else {
                 cout << "Jogador não encontrado" << endl;
@@ -138,10 +150,47 @@ int main() {
         else if (escolha == "LJ") {
             Cadastro::listar_jogadores();
         }
-        else if (escolha == "CP") {
+        else if (escolha == "EP") {
             string apl1, nome1, apl2, nome2, jogo;
+    
+        cout << "Digite L para Lig4 ou R para Reversi: ";
+        cin >> jogo;
+        for (char& l : jogo) {
+           l = toupper(l); // Ajustado para converter 'jogo' para maiúsculas
+       }
+       /*if (jogo == "L" || jogo == "R") {
+            cout << "Digite o apelido do jogador 1: ";
+            cin >> apl1;
+            Jogador jogador1 = cadastro.verificar_jogador(apl1);
+            if (jogador1 == nullptr) {
+                cout << "Jogador 1 não encontrado." << endl;
+                return 1;
+            }
+            nome1 = jogador1.nome;
+
+            cout << "Digite o apelido do jogador 2: ";
+            cin >> apl2;
+            Jogador jogador2 = cadastro.verificar_jogador(apl2);
+            if (jogador2 == nullptr) {
+                cout << "Jogador 2 não encontrado." << endl;
+                return 1;
+            }
+            nome2 = jogador2.nome;
+
+            cout << "Iniciando partida entre " << apl1 << " (" << nome1 << ") e " << apl2 << " (" << nome2 << ") no jogo ";
+
+
+        if (jogo == "L") {
+        // Lógica para iniciar uma partida de Lig4
+       } else if (jogo == "R") {
+        // Lógica para iniciar uma partida de Reversi
+       } else {
+        cout << "Escolha inválida!" << endl;
+    }
+
+
             
-            cout << "Digite L para Lig4 ou R para Reversi: ";
+           /* cout << "Digite L para Lig4 ou R para Reversi: ";
             cin >> jogo;
             for (char& l : escolha) {
             l = toupper(l);
@@ -157,12 +206,14 @@ int main() {
             if (novo_cadastro.verificar_jogador(nome1, apl1) && novo_cadastro.verificar_jogador(nome2, apl2)) {
                 Partida nova_partida(jogo, apl1, apl2);
                 nova_partida.iniciar_jogo();
-            }
-        }  
+            }*/
+        }
         else if (escolha == "FS") {
             return 0;
         }
     }
+
+  
     //comentario
     return 0;
-}*/
+}

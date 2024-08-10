@@ -1,4 +1,4 @@
-/*#include "../include/CadastroJogadores.hpp"
+#include "../include/CadastroJogadores.hpp"
 
  bool Cadastro::verificaStrings(const string &apelido) {
    fstream arquivo_base("estatisticas.txt", ios::in);
@@ -32,7 +32,7 @@
    arquivo_base << "REVERSI - V: 0 D: 0" << endl;
    arquivo_base << "LIG4 - V: 0 D: 0" << endl;
    arquivo_base.close();
-   return "Jogador cadastrado com sucesso";
+   return "Jogador cadastrado com sucesso!!!";
  }
 
  bool Cadastro::remover_jogador(string apelido) {
@@ -141,4 +141,4 @@ void Cadastro::listar_jogadores() {
        }
    }
    cout << "-----------------------------" << endl;
- }*/
+ }
