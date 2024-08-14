@@ -8,6 +8,7 @@
 #include <vector>
 #include <algorithm>
 #include <cstdio> 
+#include <limits>
 using namespace std;
 
 struct Informacoes_pessoais {

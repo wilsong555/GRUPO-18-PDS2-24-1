@@ -18,4 +18,4 @@ REVERSI - V: 0 D: 0
 LIG4 - V: 0 D: 0
 wilson gabriel
 REVERSI - V: 0 D: 0
-LIG4 - V: 0 D: 0
+LIG4 - V: 0 D : 1
