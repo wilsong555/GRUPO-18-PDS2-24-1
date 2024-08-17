@@ -10,6 +10,8 @@
 #include "IA.hpp"
 #include <limits>
 #include <stdexcept>
+#include <locale>
+
 
 using namespace std;
 
@@ -22,6 +24,7 @@ class Partida {
     void partida_reversi();
     string get_apl1() const;
     string get_apl2() const;
+    
 
   private:
     char _t_jogo;

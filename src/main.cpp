@@ -11,22 +11,24 @@
 using namespace std;
 
 int listar_opcoes_menu_inicial() {
+
+   
     int escolha;
     while(true) {
         cout << "--------MENU--------" << endl;
         cout << "(1) - Cadastrar jogador" << endl;
         cout << "(2) - Remover jogador" << endl;
         cout << "(3) - Listar jogadores" << endl;
-        cout << "(4) - ComeÃ§ar partida" << endl;
+        cout << "(4) - Começar partida" << endl;
         cout << "(5) - Fechar sistema" << endl;
-        cout << "Escolha uma das opÃ§Ãµes: ";
+        cout << "Escolha uma das opções: ";
         cin >> escolha;
         if (cin.fail()) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "\nEntrada invÃ¡lida." << endl;
+            cout << "\nEntrada inválida." << endl;
         } else if (escolha < 1 || escolha > 5) {
-            cout << "\nValor invÃ¡lido. Digite um nÃºmero de 1 a 5 de acordo com as opÃ§Ãµes." << endl;
+            cout << "\nValor inválido. Digite um número de 1 a 5 de acordo com as opções." << endl;
         } else {
             break;
         }
@@ -43,9 +45,9 @@ char atribuir_char(string mensagem_cout, char opc1, char opc2) {
         if (!isalpha(escolha_atribuida)) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Caractere invÃ¡lido. Tente novamente" << endl;
+            cout << "Caractere inválido. Tente novamente" << endl;
         } else if (escolha_atribuida != opc1 && escolha_atribuida != opc2) {
-            cout << "OpÃ§Ã£o invÃ¡lida. Tente novamente" << endl;
+            cout << "Opção inválida. Tente novamente" << endl;
         } else {
             break;
         }
@@ -54,6 +56,7 @@ char atribuir_char(string mensagem_cout, char opc1, char opc2) {
 }
 
 int main() {
+     setlocale(LC_ALL, "Portuguese");
     int escolha;
     string nome, apelido;
     string mensagem_retorno;
@@ -85,7 +88,7 @@ int main() {
             mensagem = "Deseja jogar contra a IA? (S/N): ";
             contraIA = atribuir_char(mensagem, 'S', 'N');
 
-            cout << "--------InformaÃ§Ãµes do jogador 1---------" << endl;
+            cout << "--------Informações do jogador 1---------" << endl;
             cout << "Digite o nome e o apelido: ";
             cin >> nome1 >> apl1;
             if (!Jogador::verificar_jogador(nome1, apl1, mensagem_retorno)) {
@@ -93,7 +96,7 @@ int main() {
                 cout << mensagem_retorno << endl;
             }
             if (contraIA == 'N') {
-                cout << "--------InformaÃ§Ãµes do jogador 2---------" << endl;
+                cout << "--------Informações do jogador 2---------" << endl;
                 cout << "Digite o nome e o apelido: ";
                 cin >> nome2 >> apl2;
                 if (!Jogador::verificar_jogador(nome2, apl2, mensagem_retorno)) {

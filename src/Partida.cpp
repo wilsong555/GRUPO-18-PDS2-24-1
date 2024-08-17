@@ -2,8 +2,10 @@
 #include "../include/IA.hpp"
 #include <limits>
 
-void Partida::iniciar_jogo() { 
-  //inicializaÃ§Ã£o de variaveis gerais
+
+void Partida::iniciar_jogo() {
+    setlocale(LC_ALL, "Portuguese");
+  //inicialização de variaveis gerais
   char escolha_padrao;
   int n_linha, n_coluna;
 
@@ -11,24 +13,24 @@ void Partida::iniciar_jogo() {
     if (_t_jogo == 'L') { 
 
         while (true) {
-            cout << "Deseja o tabuleiro padrÃ£o(6x7)? (S/N): ";
+            cout << u8"Deseja o tabuleiro padrão(6x7)? (S/N): ";
             cin >> escolha_padrao;
             escolha_padrao = toupper(escolha_padrao);
             if (!isalpha(escolha_padrao)) {
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                cout << "Caractere invÃ¡lido. Tente novamente" << endl;
+                cout << "Caractere inválido. Tente novamente" << endl;
             } else if (escolha_padrao != 'S' && escolha_padrao != 'N') {
-                cout << "OpÃ§Ã£o invÃ¡lida. Tente novamente" << endl;
+                cout << u8"Opção inválida. Tente novamente" << endl;
             } else {
                 break;
             }
         }
 
         if (escolha_padrao == 'N') {
-            cout << "NÂº de linhas - ";
+            cout << "Nº de linhas - ";
             n_linha = tratamento_num(4, 20);
-            cout << "NÂº de colunas - ";
+            cout << "Nº de colunas - ";
             n_coluna = tratamento_num(4, 20);
             cout << endl;
         } else {
@@ -46,7 +48,7 @@ void Partida::iniciar_jogo() {
     }
   else if (_t_jogo == 'R') {
     //precisa definir se vai ter tabuleiro personalizado aqui
-    //precisa definir como funciona a funÃ§Ã£o com ia aqui (caso use a mesma funÃ§Ã£o para ambos os casos desconsiderar)
+    //precisa definir como funciona a função com ia aqui (caso use a mesma função para ambos os casos desconsiderar)
     partida_reversi();
   }
 }
@@ -99,12 +101,12 @@ void Partida::partida_lig4_IA(Lig4 nova_partida) {
         }
     }
     if (nova_partida.get_status() == 'e') {
-        cout << "Empates nÃ£o geram pontos" << endl;
+        cout << "Empates não geram pontos" << endl;
     }
 }
 
 void Partida::partida_lig4(Lig4 nova_partida) {
-    bool jogador_turno = true; // Jogador 1 Ã© true, jogador 2 Ã© false
+    bool jogador_turno = true; // Jogador 1 é true, jogador 2 é false
     int coluna;
     nova_partida.set_status('i');
 
@@ -126,7 +128,7 @@ void Partida::partida_lig4(Lig4 nova_partida) {
             jogador_turno = !jogador_turno; // Troca de turno
         }
     }
-    if (nova_partida.get_status() == 'v') { // onde faz a mudanÃ§a de estatisticas
+    if (nova_partida.get_status() == 'v') { // onde faz a mudança de estatisticas
 
         cout << "O jogador " << (!jogador_turno ? this->get_apl1() : this->get_apl2()) << " venceu!" << endl;
         Jogador V, P;
@@ -136,11 +138,11 @@ void Partida::partida_lig4(Lig4 nova_partida) {
         P.mudar_estatistica_atual();
 
     } else if (nova_partida.get_status() == 'e') {
-        cout << "Empate! NÃ£o gera pontos." << std::endl;
+        cout << "Empate! Não gera pontos." << std::endl;
     }
 }
 
-/*vou tentar conectar as funÃ§Ãµes de mudancas de estatisticas aqui, caso queira colocar de outra forma pode ficar a vontade*/
+/*vou tentar conectar as funções de mudancas de estatisticas aqui, caso queira colocar de outra forma pode ficar a vontade*/
 
 void Partida::partida_reversi() {
     cout << "iniciou partida" << endl;
@@ -193,10 +195,10 @@ int Partida::tratamento_num(int min, int max) {
         if (cin.fail()) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Entrada invÃ¡lida. Digite um valor inteiro." << endl;
+            cout << "Entrada inválida. Digite um valor inteiro." << endl;
         }
         else if (valor < min || valor > max) {
-            cout << "NÃºmero fora do intervalo permitido. Tente novamente." << endl;
+            cout << "Número fora do intervalo permitido. Tente novamente." << endl;
         }
         else {
             break;
