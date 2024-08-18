@@ -1,16 +1,11 @@
-<<<<<<< HEAD
-/*#include "../include/Partida.hpp"
-#include "../include/Ia.hpp"
-=======
 #include "../include/Partida.hpp"
 #include "../include/IA.hpp"
->>>>>>> 6d0f8e66beb28406cb9ac6967290f1c0f7dcbdb1
 #include <limits>
 
 
 void Partida::iniciar_jogo() {
     setlocale(LC_ALL, "Portuguese");
-  //inicialização de variaveis gerais
+  //inicializaÃ§Ã£o de variaveis gerais
   char escolha_padrao;
   int n_linha, n_coluna;
 
@@ -18,24 +13,24 @@ void Partida::iniciar_jogo() {
     if (_t_jogo == 'L') { 
 
         while (true) {
-            cout << u8"Deseja o tabuleiro padrão(6x7)? (S/N): ";
+            cout << u8"Deseja o tabuleiro padrÃ£o(6x7)? (S/N): ";
             cin >> escolha_padrao;
             escolha_padrao = toupper(escolha_padrao);
             if (!isalpha(escolha_padrao)) {
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                cout << "Caractere inválido. Tente novamente" << endl;
+                cout << "Caractere invÃ¡lido. Tente novamente" << endl;
             } else if (escolha_padrao != 'S' && escolha_padrao != 'N') {
-                cout << u8"Opção inválida. Tente novamente" << endl;
+                cout << u8"OpÃ§Ã£o invÃ¡lida. Tente novamente" << endl;
             } else {
                 break;
             }
         }
 
         if (escolha_padrao == 'N') {
-            cout << "Nº de linhas - ";
+            cout << "NÂº de linhas - ";
             n_linha = tratamento_num(4, 20);
-            cout << "Nº de colunas - ";
+            cout << "NÂº de colunas - ";
             n_coluna = tratamento_num(4, 20);
             cout << endl;
         } else {
@@ -53,7 +48,7 @@ void Partida::iniciar_jogo() {
     }
   else if (_t_jogo == 'R') {
     //precisa definir se vai ter tabuleiro personalizado aqui
-    //precisa definir como funciona a função com ia aqui (caso use a mesma função para ambos os casos desconsiderar)
+    //precisa definir como funciona a funÃ§Ã£o com ia aqui (caso use a mesma funÃ§Ã£o para ambos os casos desconsiderar)
     partida_reversi();
   }
 }
@@ -106,12 +101,12 @@ void Partida::partida_lig4_IA(Lig4 nova_partida) {
         }
     }
     if (nova_partida.get_status() == 'e') {
-        cout << "Empates não geram pontos" << endl;
+        cout << "Empates nÃ£o geram pontos" << endl;
     }
 }
 
 void Partida::partida_lig4(Lig4 nova_partida) {
-    bool jogador_turno = true; // Jogador 1 é true, jogador 2 é false
+    bool jogador_turno = true; // Jogador 1 Ã© true, jogador 2 Ã© false
     int coluna;
     nova_partida.set_status('i');
 
@@ -133,7 +128,7 @@ void Partida::partida_lig4(Lig4 nova_partida) {
             jogador_turno = !jogador_turno; // Troca de turno
         }
     }
-    if (nova_partida.get_status() == 'v') { // onde faz a mudança de estatisticas
+    if (nova_partida.get_status() == 'v') { // onde faz a mudanÃ§a de estatisticas
 
         cout << "O jogador " << (!jogador_turno ? this->get_apl1() : this->get_apl2()) << " venceu!" << endl;
         Jogador V, P;
@@ -143,11 +138,11 @@ void Partida::partida_lig4(Lig4 nova_partida) {
         P.mudar_estatistica_atual();
 
     } else if (nova_partida.get_status() == 'e') {
-        cout << "Empate! Não gera pontos." << std::endl;
+        cout << "Empate! NÃ£o gera pontos." << std::endl;
     }
 }
 
-/*vou tentar conectar as funções de mudancas de estatisticas aqui, caso queira colocar de outra forma pode ficar a vontade*/
+/*vou tentar conectar as funÃ§Ãµes de mudancas de estatisticas aqui, caso queira colocar de outra forma pode ficar a vontade*/
 
 void Partida::partida_reversi() {
     cout << "iniciou partida" << endl;
@@ -189,9 +184,6 @@ string Partida::get_apl1() const {
 
 string Partida::get_apl2() const {
   return _apl2;
-<<<<<<< HEAD
-}*/
-=======
 }
 
 int Partida::tratamento_num(int min, int max) {
@@ -203,10 +195,10 @@ int Partida::tratamento_num(int min, int max) {
         if (cin.fail()) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Entrada inválida. Digite um valor inteiro." << endl;
+            cout << "Entrada invÃ¡lida. Digite um valor inteiro." << endl;
         }
         else if (valor < min || valor > max) {
-            cout << "Número fora do intervalo permitido. Tente novamente." << endl;
+            cout << "NÃºmero fora do intervalo permitido. Tente novamente." << endl;
         }
         else {
             break;
@@ -214,4 +206,3 @@ int Partida::tratamento_num(int min, int max) {
     }
     return valor;
 }
->>>>>>> 6d0f8e66beb28406cb9ac6967290f1c0f7dcbdb1

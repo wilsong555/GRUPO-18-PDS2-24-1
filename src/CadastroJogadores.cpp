@@ -21,22 +21,6 @@ vector<Informacoes_pessoais> LerArquivo(const string &nome_arquivo) {
   return dados;
 }
 
-<<<<<<< HEAD
- string Cadastro::adicionar_jogador(string nome, string apelido) {
-   if(verificaStrings(apelido)) {
-     return "Jogador já existe";
-   }
-   ofstream arquivo_base( "estatisticas.txt", ios::app);
-   if (!arquivo_base.is_open()) {
-     return "Erro ao abrir arquivo";
-   }
-   arquivo_base << apelido << " " << nome << endl;
-   arquivo_base << "REVERSI - V: 0 D: 0" << endl;
-   arquivo_base << "LIG4 - V: 0 D: 0" << endl;
-   arquivo_base.close();
-   return "Jogador cadastrado com sucesso!!!";
- }
-=======
 string normalizar(const string &str_p_modificar) {
   string nova_versao;
   for (char c : str_p_modificar) {
@@ -44,7 +28,6 @@ string normalizar(const string &str_p_modificar) {
   }
   return nova_versao;
 }
->>>>>>> 6d0f8e66beb28406cb9ac6967290f1c0f7dcbdb1
 
 bool compararApelido(const Informacoes_pessoais &a, const Informacoes_pessoais &b) {
   return normalizar(a._apelido) < normalizar(b._apelido);

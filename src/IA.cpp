@@ -1,8 +1,4 @@
-<<<<<<< HEAD:src/Ia.cpp
-/*#include "../include/Ia.hpp"
-=======
 #include "../include/IA.hpp"
->>>>>>> 6d0f8e66beb28406cb9ac6967290f1c0f7dcbdb1:src/IA.cpp
 
 IA::IA(std::string jogadorIA, std::string jogadorOponente)
     : jogadorIA(jogadorIA), jogadorOponente(jogadorOponente) {}
@@ -63,4 +59,4 @@ int IA::encontrarMelhorJogada(const Lig4& jogo) {
         }
     }
     return -1; // Retorna -1 se nenhuma jogada válida for encontrada
-}*/
+}
