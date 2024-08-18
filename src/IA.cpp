@@ -1,4 +1,8 @@
+<<<<<<< HEAD:src/Ia.cpp
 /*#include "../include/Ia.hpp"
+=======
+#include "../include/IA.hpp"
+>>>>>>> 6d0f8e66beb28406cb9ac6967290f1c0f7dcbdb1:src/IA.cpp
 
 IA::IA(std::string jogadorIA, std::string jogadorOponente)
     : jogadorIA(jogadorIA), jogadorOponente(jogadorOponente) {}
@@ -16,6 +20,7 @@ int IA::avaliarTabuleiro(Lig4& jogo) {
     }
     // Caso o jogo esteja em andamento ou empatado
     return 0;
+    //comentario
 }
 
 int IA::minimax(Lig4& jogo, int profundidade, bool isMaximizingPlayer) {

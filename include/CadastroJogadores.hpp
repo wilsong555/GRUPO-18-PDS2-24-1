@@ -7,29 +7,35 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <cstdio> 
+#include <limits>
 using namespace std;
 
-struct Pessoa {
-  string nome;
-  string apelido;
-  string Reversi;
-  string Lig4;
+struct Informacoes_pessoais {
+  string _apelido;
+  string _nome;
+  string _Reversi;
+  string _Lig4;
 
-  bool compararApelido(const Pessoa &jogador1, const Pessoa &jogador2);
-  bool compararNome(const Pessoa &jogador1, const Pessoa &jogador2);
-  vector<Pessoa> LerArquivo(const string Arq_estatisticas);
+  bool compararApelido(const Informacoes_pessoais &jogador1, const Informacoes_pessoais &jogador2);
+  bool compararNome(const Informacoes_pessoais &jogador1, const Informacoes_pessoais &jogador2);
+  string normalizar(const string &str_p_modificar);
+  vector<Informacoes_pessoais> LerArquivo(const string &nome_arquivo);
 };
 
-class Cadastro {
-  public:
-    Cadastro();
-    string adicionar_jogador(string nome, string apelido);
-    bool remover_jogador(string apelido);
-    static void listar_jogadores();
-    bool verificar_jogador(string nome, string apelido);
-
+class Gerenciamento_Jogadores {
   private:
-    static bool verificaStrings(const string &apelido);
+    fstream _arquivo;
+    string _nome_arquivo;
+    bool procura_string(const string &apelido, string &mensagem);
+
+  public:
+    Gerenciamento_Jogadores(const string &nome_arquivo);
+    ~Gerenciamento_Jogadores();
+    string adicionar_jogadores(string nome, string apelido);
+    string remover_jogador(const string &apelido);
+    void listar_jogadores() const;
 };
+
 
 #endif

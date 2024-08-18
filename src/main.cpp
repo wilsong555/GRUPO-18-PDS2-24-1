@@ -13,6 +13,7 @@
 
 using namespace std;
 
+<<<<<<< HEAD
 /*void jogarReversi() {
     Tabuleiro tabuleiro;
     Peca jogadorAtual = Peca::Preto;
@@ -127,25 +128,115 @@ int main() {
     Cadastro novo_cadastro;
     while (escolha != "FS") {
         cout << endl << "Faca a escolha:" << endl;
+=======
+int listar_opcoes_menu_inicial() {
+
+   
+    int escolha;
+    while(true) {
+        cout << "--------MENU--------" << endl;
+        cout << "(1) - Cadastrar jogador" << endl;
+        cout << "(2) - Remover jogador" << endl;
+        cout << "(3) - Listar jogadores" << endl;
+        cout << "(4) - Começar partida" << endl;
+        cout << "(5) - Fechar sistema" << endl;
+        cout << "Escolha uma das opções: ";
+>>>>>>> 6d0f8e66beb28406cb9ac6967290f1c0f7dcbdb1
         cin >> escolha;
-        for (char& l : escolha) {
-            l = toupper(l);
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "\nEntrada inválida." << endl;
+        } else if (escolha < 1 || escolha > 5) {
+            cout << "\nValor inválido. Digite um número de 1 a 5 de acordo com as opções." << endl;
+        } else {
+            break;
         }
-        if (escolha == "CJ") {
-            cout << "Digite o nome e o apelido: ";
+    }
+    return escolha;
+}
+
+char atribuir_char(string mensagem_cout, char opc1, char opc2) {
+    char escolha_atribuida;
+    while (true) {
+        cout << mensagem_cout;
+        cin >> escolha_atribuida;
+        escolha_atribuida = toupper(escolha_atribuida);
+        if (!isalpha(escolha_atribuida)) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Caractere inválido. Tente novamente" << endl;
+        } else if (escolha_atribuida != opc1 && escolha_atribuida != opc2) {
+            cout << "Opção inválida. Tente novamente" << endl;
+        } else {
+            break;
+        }
+    }
+    return escolha_atribuida;
+}
+
+int main() {
+     setlocale(LC_ALL, "Portuguese");
+    int escolha;
+    string nome, apelido;
+    string mensagem_retorno;
+    Gerenciamento_Jogadores gerenciador("estatisticas.txt");
+    
+    while (true) {
+        escolha = listar_opcoes_menu_inicial();
+        if (escolha == 1) {
+            cout << "Digite o nome e o apelido do novo jogador: ";
             cin >> nome >> apelido;
-            cout << novo_cadastro.adicionar_jogador(nome, apelido) << endl;
+            cout << gerenciador.adicionar_jogadores(nome, apelido) << endl;
         }
+<<<<<<< HEAD
         else if (escolha == "RJ") {
          
             cout << "Digite o apelido do jogador: ";
             cin >> apelido;
             if(novo_cadastro.remover_jogador(apelido)) {
                 cout << "Jogador removido com sucesso!!!" << endl;
+=======
+        else if (escolha == 2) {
+            cout << "Digite o apelido do jogador: ";
+            cin >> apelido;
+            cout << gerenciador.remover_jogador(apelido) << endl;
+        }
+        else if (escolha == 3) {
+            gerenciador.listar_jogadores();
+        }
+        else if (escolha == 4) {
+            string apl1, nome1, apl2, nome2, mensagem;
+            char jogo, contraIA;
+            bool erro_atribuicao = false;
+
+            mensagem = "Digite L para Lig4 ou R para Reversi: ";
+            jogo = atribuir_char(mensagem, 'R', 'L');
+            
+            mensagem = "Deseja jogar contra a IA? (S/N): ";
+            contraIA = atribuir_char(mensagem, 'S', 'N');
+
+            cout << "--------Informações do jogador 1---------" << endl;
+            cout << "Digite o nome e o apelido: ";
+            cin >> nome1 >> apl1;
+            if (!Jogador::verificar_jogador(nome1, apl1, mensagem_retorno)) {
+                erro_atribuicao = true;
+                cout << mensagem_retorno << endl;
+            }
+            if (contraIA == 'N') {
+                cout << "--------Informações do jogador 2---------" << endl;
+                cout << "Digite o nome e o apelido: ";
+                cin >> nome2 >> apl2;
+                if (!Jogador::verificar_jogador(nome2, apl2, mensagem_retorno)) {
+                    erro_atribuicao = true;
+                    cout << mensagem_retorno << endl;
+                }
+>>>>>>> 6d0f8e66beb28406cb9ac6967290f1c0f7dcbdb1
             }
             else {
-                cout << "Jogador nÃ£o encontrado" << endl;
+                apl2 = "IA";
             }
+<<<<<<< HEAD
         }
         else if (escolha == "LJ") {
             Cadastro::listar_jogadores();
@@ -215,5 +306,18 @@ int main() {
 
   
     //comentario
+=======
+            
+            if (erro_atribuicao == false) {
+            Partida nova_partida(jogo, apl1, apl2, contraIA);
+            nova_partida.iniciar_jogo();
+
+            } else { cout << "Erro. Tente novamente" << endl; }
+        }  
+        else if (escolha == 5) {
+            return 0;
+        }
+    }
+>>>>>>> 6d0f8e66beb28406cb9ac6967290f1c0f7dcbdb1
     return 0;
 }
