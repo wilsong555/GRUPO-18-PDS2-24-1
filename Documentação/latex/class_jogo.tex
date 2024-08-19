@@ -1,0 +1,107 @@
+\doxysection{Jogo Class Reference}
+\hypertarget{class_jogo}{}\label{class_jogo}\index{Jogo@{Jogo}}
+
+
+{\ttfamily \#include $<$Jogo.\+hpp$>$}
+
+Inheritance diagram for Jogo\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_jogo}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_jogo_a8d7544bc48b332e75da7fd937a23f040}{Jogo}} (int linha, int coluna)
+\item 
+string \mbox{\hyperlink{class_jogo_aa2b254c67a34588f98ac810b58dc63b2}{getvalor\+\_\+matriz}} (int linha, int coluna) const
+\item 
+int \mbox{\hyperlink{class_jogo_a4c22fb7144ce2f3af2e6c5e247f89800}{get\+\_\+linhas}} () const
+\item 
+int \mbox{\hyperlink{class_jogo_aebe71b59392c761b5c0c4fe4455becd6}{get\+\_\+colunas}} () const
+\item 
+char \mbox{\hyperlink{class_jogo_a380324e4da01a81634b396daf77c3e4e}{get\+\_\+status}} () const
+\item 
+void \mbox{\hyperlink{class_jogo_a9309fa2a2cbe71b83b7741956bf90a1e}{set\+\_\+status}} (char n\+\_\+status)
+\item 
+void \mbox{\hyperlink{class_jogo_a0d3f12f701a3bf15cff4ffdee8e66e1b}{setvalor}} (int linha, int coluna, string valor)
+\item 
+virtual void \mbox{\hyperlink{class_jogo_a7508e3fd6f97bea7b46a8c1736340bda}{verificar\+\_\+vencedor}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_jogo_adedd9d314db3efc949569f98fe0354a7}{imprime}} () const =0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_jogo_a8d7544bc48b332e75da7fd937a23f040}\index{Jogo@{Jogo}!Jogo@{Jogo}}
+\index{Jogo@{Jogo}!Jogo@{Jogo}}
+\doxysubsubsection{\texorpdfstring{Jogo()}{Jogo()}}
+{\footnotesize\ttfamily \label{class_jogo_a8d7544bc48b332e75da7fd937a23f040} 
+Jogo\+::\+Jogo (\begin{DoxyParamCaption}\item[{int}]{linha}{, }\item[{int}]{coluna}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_jogo_aebe71b59392c761b5c0c4fe4455becd6}\index{Jogo@{Jogo}!get\_colunas@{get\_colunas}}
+\index{get\_colunas@{get\_colunas}!Jogo@{Jogo}}
+\doxysubsubsection{\texorpdfstring{get\_colunas()}{get\_colunas()}}
+{\footnotesize\ttfamily \label{class_jogo_aebe71b59392c761b5c0c4fe4455becd6} 
+int Jogo\+::get\+\_\+colunas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_jogo_a4c22fb7144ce2f3af2e6c5e247f89800}\index{Jogo@{Jogo}!get\_linhas@{get\_linhas}}
+\index{get\_linhas@{get\_linhas}!Jogo@{Jogo}}
+\doxysubsubsection{\texorpdfstring{get\_linhas()}{get\_linhas()}}
+{\footnotesize\ttfamily \label{class_jogo_a4c22fb7144ce2f3af2e6c5e247f89800} 
+int Jogo\+::get\+\_\+linhas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_jogo_a380324e4da01a81634b396daf77c3e4e}\index{Jogo@{Jogo}!get\_status@{get\_status}}
+\index{get\_status@{get\_status}!Jogo@{Jogo}}
+\doxysubsubsection{\texorpdfstring{get\_status()}{get\_status()}}
+{\footnotesize\ttfamily \label{class_jogo_a380324e4da01a81634b396daf77c3e4e} 
+char Jogo\+::get\+\_\+status (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_jogo_aa2b254c67a34588f98ac810b58dc63b2}\index{Jogo@{Jogo}!getvalor\_matriz@{getvalor\_matriz}}
+\index{getvalor\_matriz@{getvalor\_matriz}!Jogo@{Jogo}}
+\doxysubsubsection{\texorpdfstring{getvalor\_matriz()}{getvalor\_matriz()}}
+{\footnotesize\ttfamily \label{class_jogo_aa2b254c67a34588f98ac810b58dc63b2} 
+string Jogo\+::getvalor\+\_\+matriz (\begin{DoxyParamCaption}\item[{int}]{linha}{, }\item[{int}]{coluna}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_jogo_adedd9d314db3efc949569f98fe0354a7}\index{Jogo@{Jogo}!imprime@{imprime}}
+\index{imprime@{imprime}!Jogo@{Jogo}}
+\doxysubsubsection{\texorpdfstring{imprime()}{imprime()}}
+{\footnotesize\ttfamily \label{class_jogo_adedd9d314db3efc949569f98fe0354a7} 
+virtual void Jogo\+::imprime (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_lig4_abe8a1550a66d3dbfc292e082ba909639}{Lig4}}, and \mbox{\hyperlink{class_tabuleiro_a0006a086f58452152a99524e4a748115}{Tabuleiro}}.
+
+\Hypertarget{class_jogo_a9309fa2a2cbe71b83b7741956bf90a1e}\index{Jogo@{Jogo}!set\_status@{set\_status}}
+\index{set\_status@{set\_status}!Jogo@{Jogo}}
+\doxysubsubsection{\texorpdfstring{set\_status()}{set\_status()}}
+{\footnotesize\ttfamily \label{class_jogo_a9309fa2a2cbe71b83b7741956bf90a1e} 
+void Jogo\+::set\+\_\+status (\begin{DoxyParamCaption}\item[{char}]{n\+\_\+status}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_jogo_a0d3f12f701a3bf15cff4ffdee8e66e1b}\index{Jogo@{Jogo}!setvalor@{setvalor}}
+\index{setvalor@{setvalor}!Jogo@{Jogo}}
+\doxysubsubsection{\texorpdfstring{setvalor()}{setvalor()}}
+{\footnotesize\ttfamily \label{class_jogo_a0d3f12f701a3bf15cff4ffdee8e66e1b} 
+void Jogo\+::setvalor (\begin{DoxyParamCaption}\item[{int}]{linha}{, }\item[{int}]{coluna}{, }\item[{string}]{valor}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_jogo_a7508e3fd6f97bea7b46a8c1736340bda}\index{Jogo@{Jogo}!verificar\_vencedor@{verificar\_vencedor}}
+\index{verificar\_vencedor@{verificar\_vencedor}!Jogo@{Jogo}}
+\doxysubsubsection{\texorpdfstring{verificar\_vencedor()}{verificar\_vencedor()}}
+{\footnotesize\ttfamily \label{class_jogo_a7508e3fd6f97bea7b46a8c1736340bda} 
+virtual void Jogo\+::verificar\+\_\+vencedor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_lig4_a1e81c822e1f794b0ec5b03a7c96635da}{Lig4}}, and \mbox{\hyperlink{class_tabuleiro_af69dd6b37990498e5fff5245a30d3090}{Tabuleiro}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_jogo_8hpp}{Jogo.\+hpp}}\item 
+src/\mbox{\hyperlink{_jogo_8cpp}{Jogo.\+cpp}}\end{DoxyCompactItemize}

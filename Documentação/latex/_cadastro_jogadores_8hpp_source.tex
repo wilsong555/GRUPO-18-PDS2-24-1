@@ -1,0 +1,47 @@
+\doxysection{Cadastro\+Jogadores.\+hpp}
+\hypertarget{_cadastro_jogadores_8hpp_source}{}\label{_cadastro_jogadores_8hpp_source}\index{include/CadastroJogadores.hpp@{include/CadastroJogadores.hpp}}
+\mbox{\hyperlink{_cadastro_jogadores_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CADASTROJOGADORES\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CADASTROJOGADORES\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <cstdio>}\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <limits>}}
+\DoxyCodeLine{00012\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_informacoes__pessoais}{Informacoes\_pessoais}}\ \{}
+\DoxyCodeLine{00015\ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{struct_informacoes__pessoais_ae982ed1612f321278ed51c847bd723d6}{\_apelido}};}
+\DoxyCodeLine{00016\ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{struct_informacoes__pessoais_ab9c51f56919d12b0c5f8c01ea00eb8aa}{\_nome}};}
+\DoxyCodeLine{00017\ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{struct_informacoes__pessoais_a6763ebcf568dfb829559463a02d40aab}{\_Reversi}};}
+\DoxyCodeLine{00018\ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{struct_informacoes__pessoais_a0bbdcc187f78651d59264864129065bc}{\_Lig4}};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_informacoes__pessoais_ae6fad71b5cef654c6ac8767d402deb28}{compararApelido}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_informacoes__pessoais}{Informacoes\_pessoais}}\ \&jogador1,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_informacoes__pessoais}{Informacoes\_pessoais}}\ \&jogador2);}
+\DoxyCodeLine{00021\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_informacoes__pessoais_a11e1e0638c169af1a3ad892391877352}{compararNome}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_informacoes__pessoais}{Informacoes\_pessoais}}\ \&jogador1,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_informacoes__pessoais}{Informacoes\_pessoais}}\ \&jogador2);}
+\DoxyCodeLine{00022\ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{struct_informacoes__pessoais_a9387b175666e676ce23c6f83bd8f9ee9}{normalizar}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&str\_p\_modificar);}
+\DoxyCodeLine{00023\ \ \ vector<Informacoes\_pessoais>\ \mbox{\hyperlink{struct_informacoes__pessoais_a8fc727b8cc89939ae564eb7c5a2d40bd}{LerArquivo}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&nome\_arquivo);}
+\DoxyCodeLine{00024\ \};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_gerenciamento___jogadores}{Gerenciamento\_Jogadores}}\ \{}
+\DoxyCodeLine{00027\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00028\ \ \ \ \ fstream\ \_arquivo;}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{string}\ \_nome\_arquivo;}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{bool}\ procura\_string(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&apelido,\ \textcolor{keywordtype}{string}\ \&mensagem);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{class_gerenciamento___jogadores_a91bb566fea0244faca7615cfa4aad8c7}{Gerenciamento\_Jogadores}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&nome\_arquivo);}
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{class_gerenciamento___jogadores_af9c87fdff9940a6d3d546023bafec770}{\string~Gerenciamento\_Jogadores}}();}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_gerenciamento___jogadores_abea795b45c4e5a6d92cda91762f7b7ae}{adicionar\_jogadores}}(\textcolor{keywordtype}{string}\ nome,\ \textcolor{keywordtype}{string}\ apelido);}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_gerenciamento___jogadores_a4bf1b4d3a4875bd252cef79524ca8cc1}{remover\_jogador}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&apelido);}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_gerenciamento___jogadores_a5f718c883304d17bc053521102525f39}{listar\_jogadores}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00038\ \};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

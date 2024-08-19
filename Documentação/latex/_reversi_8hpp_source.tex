@@ -1,0 +1,35 @@
+\doxysection{Reversi.\+hpp}
+\hypertarget{_reversi_8hpp_source}{}\label{_reversi_8hpp_source}\index{include/Reversi.hpp@{include/Reversi.hpp}}
+\mbox{\hyperlink{_reversi_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ REVERSI\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ REVERSI\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_jogo_8hpp}{Jogo.hpp}}"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{_reversi_8hpp_a54c8444a81a605c1d7e159dacfbc563c}{Peca}}\ \{\ \mbox{\hyperlink{_reversi_8hpp_a54c8444a81a605c1d7e159dacfbc563caaee44fb495181d1498bdfe8f34482dda}{Vazia}},\ \mbox{\hyperlink{_reversi_8hpp_a54c8444a81a605c1d7e159dacfbc563ca51bf3bba80fd13394bfe333e4ef7bb1b}{Preto}},\ \mbox{\hyperlink{_reversi_8hpp_a54c8444a81a605c1d7e159dacfbc563ca6185e260dc4e6302a98f1b043b270695}{Branco}}\ \};}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_tabuleiro}{Tabuleiro}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_jogo}{Jogo}}\ \{}
+\DoxyCodeLine{00012\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00013\ \ \ \ \ std::vector<std::vector<Peca>>\ grid;}
+\DoxyCodeLine{00014\ \ \ \ \ }
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{class_tabuleiro_a9b76bfdd7176fd0b4fdee7296a6841e5}{Tabuleiro}}();}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{_reversi_8hpp_a54c8444a81a605c1d7e159dacfbc563c}{Peca}}\ \mbox{\hyperlink{class_tabuleiro_a1f746a3c4ded01bec3a0f3028c6451c3}{operator()}}(\textcolor{keywordtype}{int}\ linha,\ \textcolor{keywordtype}{int}\ coluna)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tabuleiro_ae9fbfed11c80f7bce2ceeae14134f95a}{setPeca}}(\textcolor{keywordtype}{int}\ linha,\ \textcolor{keywordtype}{int}\ coluna,\ \mbox{\hyperlink{_reversi_8hpp_a54c8444a81a605c1d7e159dacfbc563c}{Peca}}\ peca);}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tabuleiro_a0006a086f58452152a99524e4a748115}{imprime}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_tabuleiro_af683ddc319d32cf928daaf44012cbb47}{temMovimentoValido}}(\mbox{\hyperlink{_reversi_8hpp_a54c8444a81a605c1d7e159dacfbc563c}{Peca}}\ jogador)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_tabuleiro_a303e52a3affdfdbd2db77209cd4ea8a1}{movimentoValido}}(\textcolor{keywordtype}{int}\ linha,\ \textcolor{keywordtype}{int}\ coluna,\ \mbox{\hyperlink{_reversi_8hpp_a54c8444a81a605c1d7e159dacfbc563c}{Peca}}\ jogador)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tabuleiro_a13c6450ec793e6e8fe2303a2c01af724}{aplicarMovimento}}(\textcolor{keywordtype}{int}\ linha,\ \textcolor{keywordtype}{int}\ coluna,\ \mbox{\hyperlink{_reversi_8hpp_a54c8444a81a605c1d7e159dacfbc563c}{Peca}}\ jogador);}
+\DoxyCodeLine{00024\ \ \ \ \ std::pair<int,\ int>\ \mbox{\hyperlink{class_tabuleiro_aae5f91ed9cd15323a8049e1e9a12ae98}{contarPecas}}()\ \textcolor{keyword}{const};\ \textcolor{comment}{//\ Novo\ método}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tabuleiro_af69dd6b37990498e5fff5245a30d3090}{verificar\_vencedor}}()\ \textcolor{keyword}{override};\ \textcolor{comment}{//subst.\ imprimirVencedor}}
+\DoxyCodeLine{00026\ \ \ \ \ }
+\DoxyCodeLine{00027\ \};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ REVERSI\_HPP}}
+
+\end{DoxyCode}

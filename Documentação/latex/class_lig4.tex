@@ -1,0 +1,108 @@
+\doxysection{Lig4 Class Reference}
+\hypertarget{class_lig4}{}\label{class_lig4}\index{Lig4@{Lig4}}
+
+
+{\ttfamily \#include $<$Lig4.\+hpp$>$}
+
+Inheritance diagram for Lig4\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_lig4}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_lig4_ab6a241293c39d773241f65c444bf7e65}{Lig4}} (int num\+\_\+linha, int num\+\_\+coluna)
+\item 
+bool \mbox{\hyperlink{class_lig4_a79509c8e9e897fada6719275b42cb97b}{jogar}} (int coluna, string jogador)
+\item 
+bool \mbox{\hyperlink{class_lig4_a932f0b1c7d3431334664dfa0cf8fe509}{verifica\+\_\+direcao}} (int linha, int coluna, int dir\+\_\+linha, int dir\+\_\+coluna)
+\item 
+void \mbox{\hyperlink{class_lig4_a1e81c822e1f794b0ec5b03a7c96635da}{verificar\+\_\+vencedor}} () override
+\item 
+bool \mbox{\hyperlink{class_lig4_a2a0e29477f7be1f2b6f5bafd4a51f651}{empate}} () const
+\item 
+void \mbox{\hyperlink{class_lig4_abe8a1550a66d3dbfc292e082ba909639}{imprime}} () const override
+\item 
+void \mbox{\hyperlink{class_lig4_affd1979334ba7a93ca174015fa1be0cd}{removerjogada}} (int coluna)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_jogo}{Jogo}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_jogo_a8d7544bc48b332e75da7fd937a23f040}{Jogo}} (int linha, int coluna)
+\item 
+string \mbox{\hyperlink{class_jogo_aa2b254c67a34588f98ac810b58dc63b2}{getvalor\+\_\+matriz}} (int linha, int coluna) const
+\item 
+int \mbox{\hyperlink{class_jogo_a4c22fb7144ce2f3af2e6c5e247f89800}{get\+\_\+linhas}} () const
+\item 
+int \mbox{\hyperlink{class_jogo_aebe71b59392c761b5c0c4fe4455becd6}{get\+\_\+colunas}} () const
+\item 
+char \mbox{\hyperlink{class_jogo_a380324e4da01a81634b396daf77c3e4e}{get\+\_\+status}} () const
+\item 
+void \mbox{\hyperlink{class_jogo_a9309fa2a2cbe71b83b7741956bf90a1e}{set\+\_\+status}} (char n\+\_\+status)
+\item 
+void \mbox{\hyperlink{class_jogo_a0d3f12f701a3bf15cff4ffdee8e66e1b}{setvalor}} (int linha, int coluna, string valor)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_lig4_ab6a241293c39d773241f65c444bf7e65}\index{Lig4@{Lig4}!Lig4@{Lig4}}
+\index{Lig4@{Lig4}!Lig4@{Lig4}}
+\doxysubsubsection{\texorpdfstring{Lig4()}{Lig4()}}
+{\footnotesize\ttfamily \label{class_lig4_ab6a241293c39d773241f65c444bf7e65} 
+Lig4\+::\+Lig4 (\begin{DoxyParamCaption}\item[{int}]{num\+\_\+linha}{, }\item[{int}]{num\+\_\+coluna}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_lig4_a2a0e29477f7be1f2b6f5bafd4a51f651}\index{Lig4@{Lig4}!empate@{empate}}
+\index{empate@{empate}!Lig4@{Lig4}}
+\doxysubsubsection{\texorpdfstring{empate()}{empate()}}
+{\footnotesize\ttfamily \label{class_lig4_a2a0e29477f7be1f2b6f5bafd4a51f651} 
+bool Lig4\+::empate (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_lig4_abe8a1550a66d3dbfc292e082ba909639}\index{Lig4@{Lig4}!imprime@{imprime}}
+\index{imprime@{imprime}!Lig4@{Lig4}}
+\doxysubsubsection{\texorpdfstring{imprime()}{imprime()}}
+{\footnotesize\ttfamily \label{class_lig4_abe8a1550a66d3dbfc292e082ba909639} 
+void Lig4\+::imprime (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_jogo_adedd9d314db3efc949569f98fe0354a7}{Jogo}}.
+
+\Hypertarget{class_lig4_a79509c8e9e897fada6719275b42cb97b}\index{Lig4@{Lig4}!jogar@{jogar}}
+\index{jogar@{jogar}!Lig4@{Lig4}}
+\doxysubsubsection{\texorpdfstring{jogar()}{jogar()}}
+{\footnotesize\ttfamily \label{class_lig4_a79509c8e9e897fada6719275b42cb97b} 
+bool Lig4\+::jogar (\begin{DoxyParamCaption}\item[{int}]{coluna}{, }\item[{string}]{jogador}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_lig4_affd1979334ba7a93ca174015fa1be0cd}\index{Lig4@{Lig4}!removerjogada@{removerjogada}}
+\index{removerjogada@{removerjogada}!Lig4@{Lig4}}
+\doxysubsubsection{\texorpdfstring{removerjogada()}{removerjogada()}}
+{\footnotesize\ttfamily \label{class_lig4_affd1979334ba7a93ca174015fa1be0cd} 
+void Lig4\+::removerjogada (\begin{DoxyParamCaption}\item[{int}]{coluna}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_lig4_a932f0b1c7d3431334664dfa0cf8fe509}\index{Lig4@{Lig4}!verifica\_direcao@{verifica\_direcao}}
+\index{verifica\_direcao@{verifica\_direcao}!Lig4@{Lig4}}
+\doxysubsubsection{\texorpdfstring{verifica\_direcao()}{verifica\_direcao()}}
+{\footnotesize\ttfamily \label{class_lig4_a932f0b1c7d3431334664dfa0cf8fe509} 
+bool Lig4\+::verifica\+\_\+direcao (\begin{DoxyParamCaption}\item[{int}]{linha}{, }\item[{int}]{coluna}{, }\item[{int}]{dir\+\_\+linha}{, }\item[{int}]{dir\+\_\+coluna}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_lig4_a1e81c822e1f794b0ec5b03a7c96635da}\index{Lig4@{Lig4}!verificar\_vencedor@{verificar\_vencedor}}
+\index{verificar\_vencedor@{verificar\_vencedor}!Lig4@{Lig4}}
+\doxysubsubsection{\texorpdfstring{verificar\_vencedor()}{verificar\_vencedor()}}
+{\footnotesize\ttfamily \label{class_lig4_a1e81c822e1f794b0ec5b03a7c96635da} 
+void Lig4\+::verificar\+\_\+vencedor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_jogo_a7508e3fd6f97bea7b46a8c1736340bda}{Jogo}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_lig4_8hpp}{Lig4.\+hpp}}\item 
+src/\mbox{\hyperlink{_lig4_8cpp}{Lig4.\+cpp}}\end{DoxyCompactItemize}

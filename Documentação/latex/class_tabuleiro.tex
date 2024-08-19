@@ -1,0 +1,124 @@
+\doxysection{Tabuleiro Class Reference}
+\hypertarget{class_tabuleiro}{}\label{class_tabuleiro}\index{Tabuleiro@{Tabuleiro}}
+
+
+{\ttfamily \#include $<$Reversi.\+hpp$>$}
+
+Inheritance diagram for Tabuleiro\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_tabuleiro}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_tabuleiro_a9b76bfdd7176fd0b4fdee7296a6841e5}{Tabuleiro}} ()
+\item 
+\mbox{\hyperlink{_reversi_8hpp_a54c8444a81a605c1d7e159dacfbc563c}{Peca}} \mbox{\hyperlink{class_tabuleiro_a1f746a3c4ded01bec3a0f3028c6451c3}{operator()}} (int linha, int coluna) const
+\item 
+void \mbox{\hyperlink{class_tabuleiro_ae9fbfed11c80f7bce2ceeae14134f95a}{set\+Peca}} (int linha, int coluna, \mbox{\hyperlink{_reversi_8hpp_a54c8444a81a605c1d7e159dacfbc563c}{Peca}} peca)
+\item 
+void \mbox{\hyperlink{class_tabuleiro_a0006a086f58452152a99524e4a748115}{imprime}} () const override
+\item 
+bool \mbox{\hyperlink{class_tabuleiro_af683ddc319d32cf928daaf44012cbb47}{tem\+Movimento\+Valido}} (\mbox{\hyperlink{_reversi_8hpp_a54c8444a81a605c1d7e159dacfbc563c}{Peca}} jogador) const
+\item 
+bool \mbox{\hyperlink{class_tabuleiro_a303e52a3affdfdbd2db77209cd4ea8a1}{movimento\+Valido}} (int linha, int coluna, \mbox{\hyperlink{_reversi_8hpp_a54c8444a81a605c1d7e159dacfbc563c}{Peca}} jogador) const
+\item 
+void \mbox{\hyperlink{class_tabuleiro_a13c6450ec793e6e8fe2303a2c01af724}{aplicar\+Movimento}} (int linha, int coluna, \mbox{\hyperlink{_reversi_8hpp_a54c8444a81a605c1d7e159dacfbc563c}{Peca}} jogador)
+\item 
+std\+::pair$<$ int, int $>$ \mbox{\hyperlink{class_tabuleiro_aae5f91ed9cd15323a8049e1e9a12ae98}{contar\+Pecas}} () const
+\item 
+void \mbox{\hyperlink{class_tabuleiro_af69dd6b37990498e5fff5245a30d3090}{verificar\+\_\+vencedor}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_jogo}{Jogo}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_jogo_a8d7544bc48b332e75da7fd937a23f040}{Jogo}} (int linha, int coluna)
+\item 
+string \mbox{\hyperlink{class_jogo_aa2b254c67a34588f98ac810b58dc63b2}{getvalor\+\_\+matriz}} (int linha, int coluna) const
+\item 
+int \mbox{\hyperlink{class_jogo_a4c22fb7144ce2f3af2e6c5e247f89800}{get\+\_\+linhas}} () const
+\item 
+int \mbox{\hyperlink{class_jogo_aebe71b59392c761b5c0c4fe4455becd6}{get\+\_\+colunas}} () const
+\item 
+char \mbox{\hyperlink{class_jogo_a380324e4da01a81634b396daf77c3e4e}{get\+\_\+status}} () const
+\item 
+void \mbox{\hyperlink{class_jogo_a9309fa2a2cbe71b83b7741956bf90a1e}{set\+\_\+status}} (char n\+\_\+status)
+\item 
+void \mbox{\hyperlink{class_jogo_a0d3f12f701a3bf15cff4ffdee8e66e1b}{setvalor}} (int linha, int coluna, string valor)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_tabuleiro_a9b76bfdd7176fd0b4fdee7296a6841e5}\index{Tabuleiro@{Tabuleiro}!Tabuleiro@{Tabuleiro}}
+\index{Tabuleiro@{Tabuleiro}!Tabuleiro@{Tabuleiro}}
+\doxysubsubsection{\texorpdfstring{Tabuleiro()}{Tabuleiro()}}
+{\footnotesize\ttfamily \label{class_tabuleiro_a9b76bfdd7176fd0b4fdee7296a6841e5} 
+Tabuleiro\+::\+Tabuleiro (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_tabuleiro_a13c6450ec793e6e8fe2303a2c01af724}\index{Tabuleiro@{Tabuleiro}!aplicarMovimento@{aplicarMovimento}}
+\index{aplicarMovimento@{aplicarMovimento}!Tabuleiro@{Tabuleiro}}
+\doxysubsubsection{\texorpdfstring{aplicarMovimento()}{aplicarMovimento()}}
+{\footnotesize\ttfamily \label{class_tabuleiro_a13c6450ec793e6e8fe2303a2c01af724} 
+void Tabuleiro\+::aplicar\+Movimento (\begin{DoxyParamCaption}\item[{int}]{linha}{, }\item[{int}]{coluna}{, }\item[{\mbox{\hyperlink{_reversi_8hpp_a54c8444a81a605c1d7e159dacfbc563c}{Peca}}}]{jogador}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_tabuleiro_aae5f91ed9cd15323a8049e1e9a12ae98}\index{Tabuleiro@{Tabuleiro}!contarPecas@{contarPecas}}
+\index{contarPecas@{contarPecas}!Tabuleiro@{Tabuleiro}}
+\doxysubsubsection{\texorpdfstring{contarPecas()}{contarPecas()}}
+{\footnotesize\ttfamily \label{class_tabuleiro_aae5f91ed9cd15323a8049e1e9a12ae98} 
+std\+::pair$<$ int, int $>$ Tabuleiro\+::contar\+Pecas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_tabuleiro_a0006a086f58452152a99524e4a748115}\index{Tabuleiro@{Tabuleiro}!imprime@{imprime}}
+\index{imprime@{imprime}!Tabuleiro@{Tabuleiro}}
+\doxysubsubsection{\texorpdfstring{imprime()}{imprime()}}
+{\footnotesize\ttfamily \label{class_tabuleiro_a0006a086f58452152a99524e4a748115} 
+void Tabuleiro\+::imprime (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_jogo_adedd9d314db3efc949569f98fe0354a7}{Jogo}}.
+
+\Hypertarget{class_tabuleiro_a303e52a3affdfdbd2db77209cd4ea8a1}\index{Tabuleiro@{Tabuleiro}!movimentoValido@{movimentoValido}}
+\index{movimentoValido@{movimentoValido}!Tabuleiro@{Tabuleiro}}
+\doxysubsubsection{\texorpdfstring{movimentoValido()}{movimentoValido()}}
+{\footnotesize\ttfamily \label{class_tabuleiro_a303e52a3affdfdbd2db77209cd4ea8a1} 
+bool Tabuleiro\+::movimento\+Valido (\begin{DoxyParamCaption}\item[{int}]{linha}{, }\item[{int}]{coluna}{, }\item[{\mbox{\hyperlink{_reversi_8hpp_a54c8444a81a605c1d7e159dacfbc563c}{Peca}}}]{jogador}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_tabuleiro_a1f746a3c4ded01bec3a0f3028c6451c3}\index{Tabuleiro@{Tabuleiro}!operator()@{operator()}}
+\index{operator()@{operator()}!Tabuleiro@{Tabuleiro}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily \label{class_tabuleiro_a1f746a3c4ded01bec3a0f3028c6451c3} 
+\mbox{\hyperlink{_reversi_8hpp_a54c8444a81a605c1d7e159dacfbc563c}{Peca}} Tabuleiro\+::operator() (\begin{DoxyParamCaption}\item[{int}]{linha}{, }\item[{int}]{coluna}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_tabuleiro_ae9fbfed11c80f7bce2ceeae14134f95a}\index{Tabuleiro@{Tabuleiro}!setPeca@{setPeca}}
+\index{setPeca@{setPeca}!Tabuleiro@{Tabuleiro}}
+\doxysubsubsection{\texorpdfstring{setPeca()}{setPeca()}}
+{\footnotesize\ttfamily \label{class_tabuleiro_ae9fbfed11c80f7bce2ceeae14134f95a} 
+void Tabuleiro\+::set\+Peca (\begin{DoxyParamCaption}\item[{int}]{linha}{, }\item[{int}]{coluna}{, }\item[{\mbox{\hyperlink{_reversi_8hpp_a54c8444a81a605c1d7e159dacfbc563c}{Peca}}}]{peca}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_tabuleiro_af683ddc319d32cf928daaf44012cbb47}\index{Tabuleiro@{Tabuleiro}!temMovimentoValido@{temMovimentoValido}}
+\index{temMovimentoValido@{temMovimentoValido}!Tabuleiro@{Tabuleiro}}
+\doxysubsubsection{\texorpdfstring{temMovimentoValido()}{temMovimentoValido()}}
+{\footnotesize\ttfamily \label{class_tabuleiro_af683ddc319d32cf928daaf44012cbb47} 
+bool Tabuleiro\+::tem\+Movimento\+Valido (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_reversi_8hpp_a54c8444a81a605c1d7e159dacfbc563c}{Peca}}}]{jogador}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_tabuleiro_af69dd6b37990498e5fff5245a30d3090}\index{Tabuleiro@{Tabuleiro}!verificar\_vencedor@{verificar\_vencedor}}
+\index{verificar\_vencedor@{verificar\_vencedor}!Tabuleiro@{Tabuleiro}}
+\doxysubsubsection{\texorpdfstring{verificar\_vencedor()}{verificar\_vencedor()}}
+{\footnotesize\ttfamily \label{class_tabuleiro_af69dd6b37990498e5fff5245a30d3090} 
+void Tabuleiro\+::verificar\+\_\+vencedor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_jogo_a7508e3fd6f97bea7b46a8c1736340bda}{Jogo}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_reversi_8hpp}{Reversi.\+hpp}}\item 
+src/\mbox{\hyperlink{_reversi_8cpp}{Reversi.\+cpp}}\end{DoxyCompactItemize}
