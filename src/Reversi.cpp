@@ -1,8 +1,11 @@
 #include "../include/Reversi.hpp"
-#include "../include/Jogo.hpp"
+#include "../include/Peca.hpp"// Cabeçalho da classe Tabuleiro.
+#include "../include/Jogo.hpp"//Cabeçalho da classe base Jogo, que Tabuleiro herda.
 #include <iostream>
 
-
+/*Jogo(8, 8): Chama o construtor da classe base Jogo para inicializar um tabuleiro de 8x8.
+grid(8, std::vector<Peca>(8, Peca::Vazia)): Cria uma matriz 8x8 onde cada posição é inicializada com Peca::Vazia.
+As quatro linhas seguintes configuram as peças iniciais do jogo Reversi no centro do tabuleiro.*/
 Tabuleiro::Tabuleiro() : Jogo(8, 8), grid(8, std::vector<Peca>(8, Peca::Vazia)) {
     // Configuração inicial
     grid[3][3] = Peca::Branco;
@@ -11,15 +14,21 @@ Tabuleiro::Tabuleiro() : Jogo(8, 8), grid(8, std::vector<Peca>(8, Peca::Vazia)) 
     grid[4][4] = Peca::Branco;
 }
 
-
+/*Método operator(): Permite acessar a peça no tabuleiro usando a notação tabuleiro(linha, coluna).
+    Retorna a peça (Peca) na posição especificada.*/
 Peca Tabuleiro::operator()(int linha, int coluna) const {
     return grid[linha][coluna];
 }
 
+/*Método setPeca: Define a peça na posição especificada do tabuleiro.
+    Altera o valor na matriz grid para o tipo de peça especificado.*/
 void Tabuleiro::setPeca(int linha, int coluna, Peca peca) {
     grid[linha][coluna] = peca;
 }
 
+/*Método imprime: Imprime o estado do tabuleiro no console.
+    Imprime um cabeçalho com números de coluna.
+    Para cada linha do tabuleiro, imprime o número da linha seguido por uma representação das peças (P para Preto, B para Branco, . para Vazio).*/
 void Tabuleiro::imprime() const {
     std::cout << "  1 2 3 4 5 6 7 8\n"; // Cabeçalho das colunas
     for (int i = 0; i < 8; ++i) {
@@ -34,6 +43,9 @@ void Tabuleiro::imprime() const {
     }
 }
 
+/*Método temMovimentoValido: Verifica se há algum movimento válido para o jogador.
+    Percorre todas as posições do tabuleiro e usa movimentoValido para verificar se a posição é válida para o jogador. 
+    Retorna true se algum movimento válido for encontrado.*/
 bool Tabuleiro::temMovimentoValido(Peca jogador) const {
     for (int i = 0; i < 8; ++i) {
         for (int j = 0; j < 8; ++j) {
@@ -45,6 +57,10 @@ bool Tabuleiro::temMovimentoValido(Peca jogador) const {
     return false;
 }
 
+/*Método movimentoValido: Verifica se um movimento é válido para um jogador em uma posição específica.
+
+    Se a posição não estiver vazia, retorna false.
+    Verifica todas as 8 direções possíveis (horizontal, vertical e diagonal) para ver se há uma sequência válida de peças adversárias seguidas pela peça do jogador.*/
 bool Tabuleiro::movimentoValido(int linha, int coluna, Peca jogador) const {
     if (grid[linha][coluna] != Peca::Vazia) return false;
 
@@ -77,6 +93,10 @@ bool Tabuleiro::movimentoValido(int linha, int coluna, Peca jogador) const {
     return false;
 }
 
+/*Método aplicarMovimento: Aplica um movimento no tabuleiro e vira as peças adversárias.
+    Primeiro, coloca a peça do jogador na posição especificada.
+    Verifica todas as 8 direções para encontrar peças adversárias que podem ser viradas e armazena suas posições.
+    Vira as peças adversárias encontradas na mesma direção se houver uma peça do jogador no final da linha.*/
 void Tabuleiro::aplicarMovimento(int linha, int coluna, Peca jogador) {
     setPeca(linha, coluna, jogador);
 
@@ -109,6 +129,9 @@ void Tabuleiro::aplicarMovimento(int linha, int coluna, Peca jogador) {
         }
     }
 }
+/*Método contarPecas: Conta o número de peças pretas e brancas no tabuleiro.
+
+    Percorre todo o tabuleiro e conta as peças de cada tipo.*/
 std::pair<int, int> Tabuleiro::contarPecas() const {
     int contagemPreto = 0;
     int contagemBranco = 0;
@@ -125,7 +148,10 @@ std::pair<int, int> Tabuleiro::contarPecas() const {
 
     return {contagemPreto, contagemBranco};
 }
+/*Método verificar_vencedor: Verifica e imprime o vencedor com base na contagem final das peças.
 
+    Obtém a contagem de peças pretas e brancas.
+    Compara as contagens e imprime o resultado final do jogo.*/
 void Tabuleiro::verificar_vencedor() {
     std::pair<int, int> contagem = contarPecas();
     int contagemPreto = contagem.first;

@@ -19,16 +19,16 @@ int listar_opcoes_menu_inicial() {
         cout << "(1) - Cadastrar jogador" << endl;
         cout << "(2) - Remover jogador" << endl;
         cout << "(3) - Listar jogadores" << endl;
-        cout << "(4) - Começar partida" << endl;
+        cout << "(4) - ComeÃ§ar partida" << endl;
         cout << "(5) - Fechar sistema" << endl;
-        cout << "Escolha uma das opções: ";
+        cout << "Escolha uma das opÃ§Ãµes: ";
         cin >> escolha;
         if (cin.fail()) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "\nEntrada inválida." << endl;
+            cout << "\nEntrada invÃ¡lida." << endl;
         } else if (escolha < 1 || escolha > 5) {
-            cout << "\nValor inválido. Digite um número de 1 a 5 de acordo com as opções." << endl;
+            cout << "\nValor invÃ¡lido. Digite um nÃºmero de 1 a 5 de acordo com as opÃ§Ãµes." << endl;
         } else {
             break;
         }
@@ -45,9 +45,9 @@ char atribuir_char(string mensagem_cout, char opc1, char opc2) {
         if (!isalpha(escolha_atribuida)) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Caractere inválido. Tente novamente" << endl;
+            cout << "Caractere invÃ¡lido. Tente novamente" << endl;
         } else if (escolha_atribuida != opc1 && escolha_atribuida != opc2) {
-            cout << "Opção inválida. Tente novamente" << endl;
+            cout << "OpÃ§Ã£o invÃ¡lida. Tente novamente" << endl;
         } else {
             break;
         }
@@ -88,7 +88,7 @@ int main() {
             mensagem = "Deseja jogar contra a IA? (S/N): ";
             contraIA = atribuir_char(mensagem, 'S', 'N');
 
-            cout << "--------Informações do jogador 1---------" << endl;
+            cout << "--------InformaÃ§Ãµes do jogador 1---------" << endl;
             cout << "Digite o nome e o apelido: ";
             cin >> nome1 >> apl1;
             if (!Jogador::verificar_jogador(nome1, apl1, mensagem_retorno)) {
@@ -96,7 +96,7 @@ int main() {
                 cout << mensagem_retorno << endl;
             }
             if (contraIA == 'N') {
-                cout << "--------Informações do jogador 2---------" << endl;
+                cout << "--------InformaÃ§Ãµes do jogador 2---------" << endl;
                 cout << "Digite o nome e o apelido: ";
                 cin >> nome2 >> apl2;
                 if (!Jogador::verificar_jogador(nome2, apl2, mensagem_retorno)) {
