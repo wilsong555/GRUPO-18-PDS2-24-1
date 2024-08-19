@@ -1,5 +1,6 @@
 #include "../include/Partida.hpp"
 #include "../include/IA.hpp"
+#include "../include/Peca.hpp"
 #include <limits>
 
 
@@ -90,13 +91,13 @@ void Partida::partida_lig4_IA(Lig4 nova_partida) {
         if (!jogador_turno == true) { //o ultimo jogador a jogar for o 1 - humano
             cout << "O jogador " << this->get_apl1() << " venceu!" << endl;
             Jogador V;
-            V.set_informacoes(this->get_apl1(), true, _t_jogo);
+            V.set_informacoes(this->get_apl1(), true, _t_jogo, Peca::Branco);
             V.mudar_estatistica_atual();
         }
         else {
             cout << "A maquina venceu o jogo" << endl;
             Jogador D;
-            D.set_informacoes(this->get_apl1(), false, _t_jogo);
+            D.set_informacoes(this->get_apl2(), false, _t_jogo, Peca::Preto);
             D.mudar_estatistica_atual();
         }
     }
@@ -132,9 +133,9 @@ void Partida::partida_lig4(Lig4 nova_partida) {
 
         cout << "O jogador " << (!jogador_turno ? this->get_apl1() : this->get_apl2()) << " venceu!" << endl;
         Jogador V, P;
-        V.set_informacoes((!jogador_turno ? this->get_apl1() : this->get_apl2()), true, _t_jogo);
+        V.set_informacoes((!jogador_turno ? this->get_apl1() : this->get_apl2()), true, _t_jogo, Peca::Branco);
         V.mudar_estatistica_atual();
-        P.set_informacoes((jogador_turno ? this->get_apl1() : this->get_apl2()), false, _t_jogo);
+        P.set_informacoes((jogador_turno ? this->get_apl1() : this->get_apl2()), false, _t_jogo, Peca::Preto);
         P.mudar_estatistica_atual();
 
     } else if (nova_partida.get_status() == 'e') {

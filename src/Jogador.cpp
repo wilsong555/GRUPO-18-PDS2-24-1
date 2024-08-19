@@ -1,5 +1,5 @@
 #include "../include/Jogador.hpp"
-
+#include "../include/Peca.hpp"
 
 int is_num(string &achar_num) {
     int numero;
@@ -26,13 +26,17 @@ void achar_valor(string linha_p_analisar, vector<int> &add_valor, bool situacao)
     add_valor[1] = (situacao == true ? add_valor[1] - 1 : add_valor[1]);
 }
 
-Jogador::Jogador() {
+Jogador::Jogador() : _peca(Peca::Vazia){
 }
 
-void Jogador::set_informacoes(string apelido, bool situacao, char t_jogo) {
+void Jogador::set_informacoes(string apelido, bool situacao, char t_jogo, Peca peca) {
     this->_apelido = apelido;
     this->_status = situacao;
     this->_jogo_atual = t_jogo;
+    this->_peca = peca;
+}
+Peca Jogador::getPeca() const {
+    return _peca;
 }
 
 bool Jogador::mudar_estatistica_atual() {

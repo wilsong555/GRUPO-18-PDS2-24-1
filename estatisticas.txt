@@ -27,3 +27,9 @@ wilson gabriel
 >>>>>>> 6d0f8e66beb28406cb9ac6967290f1c0f7dcbdb1
 REVERSI - V: 0 D: 0
 LIG4 - V: 0 D: 0
+soy sergio
+REVERSI - V: 0 D: 0
+LIG4 - V: 0 D: 0
+cris cristy
+REVERSI - V: 0 D: 0
+LIG4 - V: 0 D: 0
